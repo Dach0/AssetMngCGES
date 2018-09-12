@@ -1,0 +1,113 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="asset">
+            <h2><span>Asset</span> {{asset.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{asset.description}}</span>
+                </dd>
+                <dt><span>Manufacturer</span></dt>
+                <dd>
+                    <span>{{asset.manufacturer}}</span>
+                </dd>
+                <dt><span>Brand</span></dt>
+                <dd>
+                    <span>{{asset.brand}}</span>
+                </dd>
+                <dt><span>Model</span></dt>
+                <dd>
+                    <span>{{asset.model}}</span>
+                </dd>
+                <dt><span>Picture</span></dt>
+                <dd>
+                    <span>{{asset.picture}}</span>
+                </dd>
+                <dt><span>Serial Number</span></dt>
+                <dd>
+                    <span>{{asset.serialNumber}}</span>
+                </dd>
+                <dt><span>Date Of Obligation</span></dt>
+                <dd>
+                    <span>{{asset.dateOfObligation}}</span>
+                </dd>
+                <dt><span>Purchase Price</span></dt>
+                <dd>
+                    <span>{{asset.purchasePrice}}</span>
+                </dd>
+                <dt><span>Market Price</span></dt>
+                <dd>
+                    <span>{{asset.marketPrice}}</span>
+                </dd>
+                <dt><span>Scrap Price</span></dt>
+                <dd>
+                    <span>{{asset.scrapPrice}}</span>
+                </dd>
+                <dt><span>Purchased Date</span></dt>
+                <dd>
+                    <span>{{asset.purchasedDate}}</span>
+                </dd>
+                <dt><span>In Service Date</span></dt>
+                <dd>
+                    <span>{{asset.inServiceDate}}</span>
+                </dd>
+                <dt><span>Warrenty</span></dt>
+                <dd>
+                    <span>{{asset.warrenty}}</span>
+                </dd>
+                <dt><span>Notes</span></dt>
+                <dd>
+                    <span>{{asset.notes}}</span>
+                </dd>
+                <dt><span>Attachments</span></dt>
+                <dd>
+                    <span>{{asset.attachments}}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <div *ngIf="asset.type">
+                        <a [routerLink]="['/type', asset.type?.id, 'view']">{{asset.type?.typeName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Location</span></dt>
+                <dd>
+                    <div *ngIf="asset.location">
+                        <a [routerLink]="['/location', asset.location?.id, 'view']">{{asset.location?.locationName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <div *ngIf="asset.status">
+                        <a [routerLink]="['/asset-status', asset.status?.id, 'view']">{{asset.status?.status}}</a>
+                    </div>
+                </dd>
+                <dt><span>Condition</span></dt>
+                <dd>
+                    <div *ngIf="asset.condition">
+                        <a [routerLink]="['/asset-condition', asset.condition?.id, 'view']">{{asset.condition?.conditionDesc}}</a>
+                    </div>
+                </dd>
+                <dt><span>Asset</span></dt>
+                <dd>
+                    <div *ngIf="asset.asset">
+                        <a [routerLink]="['/employee', asset.asset?.id, 'view']">{{asset.asset?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/asset', asset.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

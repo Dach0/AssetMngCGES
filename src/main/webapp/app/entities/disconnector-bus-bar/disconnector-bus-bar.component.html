@@ -1,0 +1,90 @@
+<div>
+    <h2 id="page-heading">
+        <span>Disconnector Bus Bars</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-disconnector-bus-bar" [routerLink]="['/disconnector-bus-bar/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Disconnector Bus Bar
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="disconnectorBusBars">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Production Year</span></th>
+            <th><span>Current</span></th>
+            <th><span>Serial</span></th>
+            <th><span>Picture</span></th>
+            <th><span>Drive</span></th>
+            <th><span>Type</span></th>
+            <th><span>Manufactured</span></th>
+            <th><span>Substation</span></th>
+            <th><span>Field</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let disconnectorBusBar of disconnectorBusBars ;trackBy: trackId">
+                <td><a [routerLink]="['/disconnector-bus-bar', disconnectorBusBar.id, 'view' ]">{{disconnectorBusBar.id}}</a></td>
+                <td>{{disconnectorBusBar.productionYear}}</td>
+                <td>{{disconnectorBusBar.current}}</td>
+                <td>{{disconnectorBusBar.serial}}</td>
+                <td>{{disconnectorBusBar.picture}}</td>
+                <td>
+                    <div *ngIf="disconnectorBusBar.drive">
+                        <a [routerLink]="['../disconnector-drive', disconnectorBusBar.drive?.id, 'view' ]" >{{disconnectorBusBar.drive?.discDrive}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorBusBar.type">
+                        <a [routerLink]="['../disconnector-type', disconnectorBusBar.type?.id, 'view' ]" >{{disconnectorBusBar.type?.discType}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorBusBar.manufactured">
+                        <a [routerLink]="['../manufacturer', disconnectorBusBar.manufactured?.id, 'view' ]" >{{disconnectorBusBar.manufactured?.manufactName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorBusBar.substation">
+                        <a [routerLink]="['../substation', disconnectorBusBar.substation?.id, 'view' ]" >{{disconnectorBusBar.substation?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorBusBar.field">
+                        <a [routerLink]="['../field', disconnectorBusBar.field?.id, 'view' ]" >{{disconnectorBusBar.field?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/disconnector-bus-bar', disconnectorBusBar.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/disconnector-bus-bar', disconnectorBusBar.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'disconnector-bus-bar/'+ disconnectorBusBar.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

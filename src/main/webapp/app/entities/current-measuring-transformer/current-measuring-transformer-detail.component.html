@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="currentMeasuringTransformer">
+            <h2><span>Current Measuring Transformer</span> {{currentMeasuringTransformer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Production Year</span></dt>
+                <dd>
+                    <span>{{currentMeasuringTransformer.productionYear}}</span>
+                </dd>
+                <dt><span>Transmission Ratio</span></dt>
+                <dd>
+                    <span>{{currentMeasuringTransformer.transmissionRatio}}</span>
+                </dd>
+                <dt><span>Accuracy Class</span></dt>
+                <dd>
+                    <span>{{currentMeasuringTransformer.accuracyClass}}</span>
+                </dd>
+                <dt><span>Nominal Power</span></dt>
+                <dd>
+                    <span>{{currentMeasuringTransformer.nominalPower}}</span>
+                </dd>
+                <dt><span>Serial</span></dt>
+                <dd>
+                    <span>{{currentMeasuringTransformer.serial}}</span>
+                </dd>
+                <dt><span>Picture</span></dt>
+                <dd>
+                    <span>{{currentMeasuringTransformer.picture}}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <div *ngIf="currentMeasuringTransformer.type">
+                        <a [routerLink]="['/cmt-type', currentMeasuringTransformer.type?.id, 'view']">{{currentMeasuringTransformer.type?.cmtType}}</a>
+                    </div>
+                </dd>
+                <dt><span>Manufactured</span></dt>
+                <dd>
+                    <div *ngIf="currentMeasuringTransformer.manufactured">
+                        <a [routerLink]="['/manufacturer', currentMeasuringTransformer.manufactured?.id, 'view']">{{currentMeasuringTransformer.manufactured?.manufactName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Substation</span></dt>
+                <dd>
+                    <div *ngIf="currentMeasuringTransformer.substation">
+                        <a [routerLink]="['/substation', currentMeasuringTransformer.substation?.id, 'view']">{{currentMeasuringTransformer.substation?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Field</span></dt>
+                <dd>
+                    <div *ngIf="currentMeasuringTransformer.field">
+                        <a [routerLink]="['/field', currentMeasuringTransformer.field?.id, 'view']">{{currentMeasuringTransformer.field?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/current-measuring-transformer', currentMeasuringTransformer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

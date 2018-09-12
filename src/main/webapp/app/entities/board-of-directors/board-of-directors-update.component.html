@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-board-of-directors-heading">Create or edit a Board Of Directors</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!boardOfDirectors.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="boardOfDirectors.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="boardOfDirectors.startDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endDate">End Date</label>
+                    <div class="input-group">
+                        <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="boardOfDirectors.endDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="field_executive">Executive</label>
+                    <select class="form-control" id="field_executive" multiple name="executive" [(ngModel)]="boardOfDirectors.executives">
+                        <option [ngValue]="getSelected(boardOfDirectors.executives, boardMemberOption)" *ngFor="let boardMemberOption of boardmembers; trackBy: trackBoardMemberById">{{boardMemberOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_execAssistent">Exec Assistent</label>
+                    <select class="form-control" id="field_execAssistent" multiple name="execAssistent" [(ngModel)]="boardOfDirectors.execAssistents">
+                        <option [ngValue]="getSelected(boardOfDirectors.execAssistents, boardMemberOption)" *ngFor="let boardMemberOption of boardmembers; trackBy: trackBoardMemberById">{{boardMemberOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_member1">Member 1</label>
+                    <select class="form-control" id="field_member1" multiple name="member1" [(ngModel)]="boardOfDirectors.member1S">
+                        <option [ngValue]="getSelected(boardOfDirectors.member1S, boardMemberOption)" *ngFor="let boardMemberOption of boardmembers; trackBy: trackBoardMemberById">{{boardMemberOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_member2">Member 2</label>
+                    <select class="form-control" id="field_member2" multiple name="member2" [(ngModel)]="boardOfDirectors.member2S">
+                        <option [ngValue]="getSelected(boardOfDirectors.member2S, boardMemberOption)" *ngFor="let boardMemberOption of boardmembers; trackBy: trackBoardMemberById">{{boardMemberOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_member3">Member 3</label>
+                    <select class="form-control" id="field_member3" multiple name="member3" [(ngModel)]="boardOfDirectors.member3S">
+                        <option [ngValue]="getSelected(boardOfDirectors.member3S, boardMemberOption)" *ngFor="let boardMemberOption of boardmembers; trackBy: trackBoardMemberById">{{boardMemberOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_member4">Member 4</label>
+                    <select class="form-control" id="field_member4" multiple name="member4" [(ngModel)]="boardOfDirectors.member4S">
+                        <option [ngValue]="getSelected(boardOfDirectors.member4S, boardMemberOption)" *ngFor="let boardMemberOption of boardmembers; trackBy: trackBoardMemberById">{{boardMemberOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_member5">Member 5</label>
+                    <select class="form-control" id="field_member5" multiple name="member5" [(ngModel)]="boardOfDirectors.member5S">
+                        <option [ngValue]="getSelected(boardOfDirectors.member5S, boardMemberOption)" *ngFor="let boardMemberOption of boardmembers; trackBy: trackBoardMemberById">{{boardMemberOption.email}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+    "name": "Contract",
+    "fields": [
+        {
+            "fieldName": "contractType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180830125052",
+    "entityTableName": "contract",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

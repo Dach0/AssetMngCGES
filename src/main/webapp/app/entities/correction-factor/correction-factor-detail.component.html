@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="correctionFactor">
+            <h2><span>Correction Factor</span> {{correctionFactor.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Template Name</span></dt>
+                <dd>
+                    <span>{{correctionFactor.templateName}}</span>
+                </dd>
+                <dt><span>Degrees 30</span></dt>
+                <dd>
+                    <span>{{correctionFactor.degrees30}}</span>
+                </dd>
+                <dt><span>Degrees 20</span></dt>
+                <dd>
+                    <span>{{correctionFactor.degrees20}}</span>
+                </dd>
+                <dt><span>Degrees 10</span></dt>
+                <dd>
+                    <span>{{correctionFactor.degrees10}}</span>
+                </dd>
+                <dt><span>Degrees 0</span></dt>
+                <dd>
+                    <span>{{correctionFactor.degrees0}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/correction-factor', correctionFactor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

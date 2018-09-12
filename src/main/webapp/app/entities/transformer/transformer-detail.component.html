@@ -1,0 +1,107 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="transformer">
+            <h2><span>Transformer</span> {{transformer.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Production Year</span></dt>
+                <dd>
+                    <span>{{transformer.productionYear}}</span>
+                </dd>
+                <dt><span>Installation Year</span></dt>
+                <dd>
+                    <span>{{transformer.installationYear}}</span>
+                </dd>
+                <dt><span>Short Circuit Voltage</span></dt>
+                <dd>
+                    <span>{{transformer.shortCircuitVoltage}}</span>
+                </dd>
+                <dt><span>Is Earth Grounding</span></dt>
+                <dd>
+                    <span>{{transformer.isEarthGrounding}}</span>
+                </dd>
+                <dt><span>Picture</span></dt>
+                <dd>
+                    <span>{{transformer.picture}}</span>
+                </dd>
+                <dt><span>Serial Number</span></dt>
+                <dd>
+                    <span>{{transformer.serialNumber}}</span>
+                </dd>
+                <dt><span>Condition</span></dt>
+                <dd>
+                    <div *ngIf="transformer.condition">
+                        <a [routerLink]="['/element-condition', transformer.condition?.id, 'view']">{{transformer.condition?.elementCondition}}</a>
+                    </div>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <div *ngIf="transformer.status">
+                        <a [routerLink]="['/element-status', transformer.status?.id, 'view']">{{transformer.status?.elementStatus}}</a>
+                    </div>
+                </dd>
+                <dt><span>Coupling</span></dt>
+                <dd>
+                    <div *ngIf="transformer.coupling">
+                        <a [routerLink]="['/coupling', transformer.coupling?.id, 'view']">{{transformer.coupling?.coupling}}</a>
+                    </div>
+                </dd>
+                <dt><span>Power</span></dt>
+                <dd>
+                    <div *ngIf="transformer.power">
+                        <a [routerLink]="['/power', transformer.power?.id, 'view']">{{transformer.power?.power}}</a>
+                    </div>
+                </dd>
+                <dt><span>Trans Ratio</span></dt>
+                <dd>
+                    <div *ngIf="transformer.transRatio">
+                        <a [routerLink]="['/transmission-ratio', transformer.transRatio?.id, 'view']">{{transformer.transRatio?.transmissionRatio}}</a>
+                    </div>
+                </dd>
+                <dt><span>Manufacturer</span></dt>
+                <dd>
+                    <div *ngIf="transformer.manufacturer">
+                        <a [routerLink]="['/manufacturer', transformer.manufacturer?.id, 'view']">{{transformer.manufacturer?.manufactName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <div *ngIf="transformer.type">
+                        <a [routerLink]="['/transformer-type', transformer.type?.id, 'view']">{{transformer.type?.type}}</a>
+                    </div>
+                </dd>
+                <dt><span>Service</span></dt>
+                <dd>
+                    <div *ngIf="transformer.service">
+                        <a [routerLink]="['/service', transformer.service?.id, 'view']">{{transformer.service?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Redni Broj</span></dt>
+                <dd>
+                    <div *ngIf="transformer.redniBroj">
+                        <a [routerLink]="['/transformator-number', transformer.redniBroj?.id, 'view']">{{transformer.redniBroj?.tNumber}}</a>
+                    </div>
+                </dd>
+                <dt><span>Substation</span></dt>
+                <dd>
+                    <div *ngIf="transformer.substation">
+                        <a [routerLink]="['/substation', transformer.substation?.id, 'view']">{{transformer.substation?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/transformer', transformer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "name": "PylonType",
+    "fields": [
+        {
+            "fieldName": "pylonType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength",
+                "required"
+            ],
+            "fieldValidateRulesMaxlength": 45
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180830125013",
+    "entityTableName": "pylon_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

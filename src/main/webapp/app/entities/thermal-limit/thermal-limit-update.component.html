@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-thermal-limit-heading">Create or edit a Thermal Limit</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!thermalLimit.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="thermalLimit.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_templateName">Template Name</label>
+                    <input type="text" class="form-control" name="templateName" id="field_templateName"
+                        [(ngModel)]="thermalLimit.templateName" required/>
+                    <div [hidden]="!(editForm.controls.templateName?.dirty && editForm.controls.templateName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.templateName?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_iMaxSummer">I Max Summer</label>
+                    <input type="number" class="form-control" name="iMaxSummer" id="field_iMaxSummer"
+                        [(ngModel)]="thermalLimit.iMaxSummer" required/>
+                    <div [hidden]="!(editForm.controls.iMaxSummer?.dirty && editForm.controls.iMaxSummer?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.iMaxSummer?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.iMaxSummer?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_iMaxWinter">I Max Winter</label>
+                    <input type="number" class="form-control" name="iMaxWinter" id="field_iMaxWinter"
+                        [(ngModel)]="thermalLimit.iMaxWinter" required/>
+                    <div [hidden]="!(editForm.controls.iMaxWinter?.dirty && editForm.controls.iMaxWinter?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.iMaxWinter?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.iMaxWinter?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pMaxSummer">P Max Summer</label>
+                    <input type="number" class="form-control" name="pMaxSummer" id="field_pMaxSummer"
+                        [(ngModel)]="thermalLimit.pMaxSummer" required/>
+                    <div [hidden]="!(editForm.controls.pMaxSummer?.dirty && editForm.controls.pMaxSummer?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.pMaxSummer?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.pMaxSummer?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pMaxWinter">P Max Winter</label>
+                    <input type="number" class="form-control" name="pMaxWinter" id="field_pMaxWinter"
+                        [(ngModel)]="thermalLimit.pMaxWinter" required/>
+                    <div [hidden]="!(editForm.controls.pMaxWinter?.dirty && editForm.controls.pMaxWinter?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.pMaxWinter?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.pMaxWinter?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_thermalLimit">Thermal Limit</label>
+                    <input type="number" class="form-control" name="thermalLimit" id="field_thermalLimit"
+                        [(ngModel)]="thermalLimit.thermalLimit" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+{
+    "name": "Employee",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lastname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "telNum1",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "telNum2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "pictureEmpl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "attachments",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "phPrivilage",
+            "otherEntityName": "phonePrivilage",
+            "otherEntityField": "privilage"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "group",
+            "otherEntityName": "employeeGroup",
+            "otherEntityField": "groupName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sector",
+            "otherEntityName": "sector",
+            "otherEntityField": "sectorName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "departman",
+            "otherEntityName": "departman",
+            "otherEntityField": "depName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "jobDesc",
+            "otherEntityName": "job",
+            "otherEntityField": "jobDescription"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "status",
+            "otherEntityName": "jobStatus",
+            "otherEntityField": "jobStatus"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "profQualification",
+            "otherEntityName": "qualification",
+            "otherEntityField": "proffQualification"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "contractType",
+            "otherEntityName": "contract",
+            "otherEntityField": "contractType"
+        }
+    ],
+    "changelogDate": "20180830125045",
+    "entityTableName": "employee",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

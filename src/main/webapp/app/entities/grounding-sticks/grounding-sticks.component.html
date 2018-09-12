@@ -1,0 +1,90 @@
+<div>
+    <h2 id="page-heading">
+        <span>Grounding Sticks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-grounding-sticks" [routerLink]="['/grounding-sticks/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Grounding Sticks
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="groundingSticks">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Production Year</span></th>
+            <th><span>Current</span></th>
+            <th><span>Serial</span></th>
+            <th><span>Picture</span></th>
+            <th><span>Drive</span></th>
+            <th><span>Type</span></th>
+            <th><span>Manufactured</span></th>
+            <th><span>Substation</span></th>
+            <th><span>Field</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let groundingSticks of groundingSticks ;trackBy: trackId">
+                <td><a [routerLink]="['/grounding-sticks', groundingSticks.id, 'view' ]">{{groundingSticks.id}}</a></td>
+                <td>{{groundingSticks.productionYear}}</td>
+                <td>{{groundingSticks.current}}</td>
+                <td>{{groundingSticks.serial}}</td>
+                <td>{{groundingSticks.picture}}</td>
+                <td>
+                    <div *ngIf="groundingSticks.drive">
+                        <a [routerLink]="['../ground-sticks-drive', groundingSticks.drive?.id, 'view' ]" >{{groundingSticks.drive?.gsDrive}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="groundingSticks.type">
+                        <a [routerLink]="['../ground-sticks-type', groundingSticks.type?.id, 'view' ]" >{{groundingSticks.type?.gsType}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="groundingSticks.manufactured">
+                        <a [routerLink]="['../manufacturer', groundingSticks.manufactured?.id, 'view' ]" >{{groundingSticks.manufactured?.manufactName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="groundingSticks.substation">
+                        <a [routerLink]="['../substation', groundingSticks.substation?.id, 'view' ]" >{{groundingSticks.substation?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="groundingSticks.field">
+                        <a [routerLink]="['../field', groundingSticks.field?.id, 'view' ]" >{{groundingSticks.field?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/grounding-sticks', groundingSticks.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/grounding-sticks', groundingSticks.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'grounding-sticks/'+ groundingSticks.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

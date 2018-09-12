@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="voltageLevel">
+            <h2><span>Voltage Level</span> {{voltageLevel.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Voltage Level</span></dt>
+                <dd>
+                    <span>{{voltageLevel.voltageLevel}}</span>
+                </dd>
+                <dt><span>Correction Factor</span></dt>
+                <dd>
+                    <div *ngIf="voltageLevel.correctionFactor">
+                        <a [routerLink]="['/correction-factor', voltageLevel.correctionFactor?.id, 'view']">{{voltageLevel.correctionFactor?.templateName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/voltage-level', voltageLevel.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

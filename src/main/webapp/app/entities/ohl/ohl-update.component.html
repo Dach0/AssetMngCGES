@@ -1,0 +1,216 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-ohl-heading">Create or edit a Ohl</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!ohl.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="ohl.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ohlNumber">Ohl Number</label>
+                    <input type="text" class="form-control" name="ohlNumber" id="field_ohlNumber"
+                        [(ngModel)]="ohl.ohlNumber" maxlength="45"/>
+                    <div [hidden]="!(editForm.controls.ohlNumber?.dirty && editForm.controls.ohlNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ohlNumber?.errors?.maxlength">
+                        This field cannot be longer than 45 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_operationYear">Operation Year</label>
+                    <input type="number" class="form-control" name="operationYear" id="field_operationYear"
+                        [(ngModel)]="ohl.operationYear" required/>
+                    <div [hidden]="!(editForm.controls.operationYear?.dirty && editForm.controls.operationYear?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.operationYear?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.operationYear?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lengthTotal">Length Total</label>
+                    <input type="number" class="form-control" name="lengthTotal" id="field_lengthTotal"
+                        [(ngModel)]="ohl.lengthTotal" required/>
+                    <div [hidden]="!(editForm.controls.lengthTotal?.dirty && editForm.controls.lengthTotal?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lengthTotal?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.lengthTotal?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lengthInMne">Length In Mne</label>
+                    <input type="number" class="form-control" name="lengthInMne" id="field_lengthInMne"
+                        [(ngModel)]="ohl.lengthInMne" required/>
+                    <div [hidden]="!(editForm.controls.lengthInMne?.dirty && editForm.controls.lengthInMne?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lengthInMne?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.lengthInMne?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rOhmPerPhaseInMne">R Ohm Per Phase In Mne</label>
+                    <input type="number" class="form-control" name="rOhmPerPhaseInMne" id="field_rOhmPerPhaseInMne"
+                        [(ngModel)]="ohl.rOhmPerPhaseInMne" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_rOhmPerPhaseTotal">R Ohm Per Phase Total</label>
+                    <input type="number" class="form-control" name="rOhmPerPhaseTotal" id="field_rOhmPerPhaseTotal"
+                        [(ngModel)]="ohl.rOhmPerPhaseTotal" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_xOhmPerPhaseInMne">X Ohm Per Phase In Mne</label>
+                    <input type="number" class="form-control" name="xOhmPerPhaseInMne" id="field_xOhmPerPhaseInMne"
+                        [(ngModel)]="ohl.xOhmPerPhaseInMne" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_xOhmPerPhaseTotal">X Ohm Per Phase Total</label>
+                    <input type="number" class="form-control" name="xOhmPerPhaseTotal" id="field_xOhmPerPhaseTotal"
+                        [(ngModel)]="ohl.xOhmPerPhaseTotal" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bOhmPerPhaseInMne">B Ohm Per Phase In Mne</label>
+                    <input type="number" class="form-control" name="bOhmPerPhaseInMne" id="field_bOhmPerPhaseInMne"
+                        [(ngModel)]="ohl.bOhmPerPhaseInMne" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bOhmPerPhaseTotal">B Ohm Per Phase Total</label>
+                    <input type="number" class="form-control" name="bOhmPerPhaseTotal" id="field_bOhmPerPhaseTotal"
+                        [(ngModel)]="ohl.bOhmPerPhaseTotal" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_r0OhmPerPhaseInMne">R 0 Ohm Per Phase In Mne</label>
+                    <input type="number" class="form-control" name="r0OhmPerPhaseInMne" id="field_r0OhmPerPhaseInMne"
+                        [(ngModel)]="ohl.r0OhmPerPhaseInMne" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_r0OhmPerPhaseTotal">R 0 Ohm Per Phase Total</label>
+                    <input type="number" class="form-control" name="r0OhmPerPhaseTotal" id="field_r0OhmPerPhaseTotal"
+                        [(ngModel)]="ohl.r0OhmPerPhaseTotal" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_x0OhmPerPhaseInMne">X 0 Ohm Per Phase In Mne</label>
+                    <input type="number" class="form-control" name="x0OhmPerPhaseInMne" id="field_x0OhmPerPhaseInMne"
+                        [(ngModel)]="ohl.x0OhmPerPhaseInMne" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_x0OhmPerPhaseTotal">X 0 Ohm Per Phase Total</label>
+                    <input type="number" class="form-control" name="x0OhmPerPhaseTotal" id="field_x0OhmPerPhaseTotal"
+                        [(ngModel)]="ohl.x0OhmPerPhaseTotal" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pylonNumber">Pylon Number</label>
+                    <input type="number" class="form-control" name="pylonNumber" id="field_pylonNumber"
+                        [(ngModel)]="ohl.pylonNumber" required/>
+                    <div [hidden]="!(editForm.controls.pylonNumber?.dirty && editForm.controls.pylonNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.pylonNumber?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.pylonNumber?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isolatorNumber">Isolator Number</label>
+                    <input type="number" class="form-control" name="isolatorNumber" id="field_isolatorNumber"
+                        [(ngModel)]="ohl.isolatorNumber" required/>
+                    <div [hidden]="!(editForm.controls.isolatorNumber?.dirty && editForm.controls.isolatorNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.isolatorNumber?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.isolatorNumber?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation1">Substation 1</label>
+                    <select class="form-control" id="field_substation1" name="substation1" [(ngModel)]="ohl.substation1" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === ohl.substation1?.id ? ohl.substation1 : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation2">Substation 2</label>
+                    <select class="form-control" id="field_substation2" name="substation2" [(ngModel)]="ohl.substation2" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === ohl.substation2?.id ? ohl.substation2 : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tConnection">T Connection</label>
+                    <select class="form-control" id="field_tConnection" name="tConnection" [(ngModel)]="ohl.tConnection" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tconnectionOption.id === ohl.tConnection?.id ? ohl.tConnection : tconnectionOption" *ngFor="let tconnectionOption of tconnections; trackBy: trackTconnectionById">{{tconnectionOption.tConnSubStationName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_voltageLevel">Voltage Level</label>
+                    <select class="form-control" id="field_voltageLevel" name="voltageLevel" [(ngModel)]="ohl.voltageLevel" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="voltageLevelOption.id === ohl.voltageLevel?.id ? ohl.voltageLevel : voltageLevelOption" *ngFor="let voltageLevelOption of voltagelevels; trackBy: trackVoltageLevelById">{{voltageLevelOption.voltageLevel}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ohlConstructionPart">Ohl Construction Part</label>
+                    <select class="form-control" id="field_ohlConstructionPart" name="ohlConstructionPart" [(ngModel)]="ohl.ohlConstructionPart" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="pylonTypeOption.id === ohl.ohlConstructionPart?.id ? ohl.ohlConstructionPart : pylonTypeOption" *ngFor="let pylonTypeOption of pylontypes; trackBy: trackPylonTypeById">{{pylonTypeOption.pylonType}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_thermalLimit">Thermal Limit</label>
+                    <select class="form-control" id="field_thermalLimit" name="thermalLimit" [(ngModel)]="ohl.thermalLimit" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="thermalLimitOption.id === ohl.thermalLimit?.id ? ohl.thermalLimit : thermalLimitOption" *ngFor="let thermalLimitOption of thermallimits; trackBy: trackThermalLimitById">{{thermalLimitOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_condCrossSect">Cond Cross Sect</label>
+                    <select class="form-control" id="field_condCrossSect" name="condCrossSect" [(ngModel)]="ohl.condCrossSect" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="conductorCrossSectOption.id === ohl.condCrossSect?.id ? ohl.condCrossSect : conductorCrossSectOption" *ngFor="let conductorCrossSectOption of conductorcrosssects; trackBy: trackConductorCrossSectById">{{conductorCrossSectOption.conductorCrossSection}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_earthCrossSect">Earth Cross Sect</label>
+                    <select class="form-control" id="field_earthCrossSect" name="earthCrossSect" [(ngModel)]="ohl.earthCrossSect" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="earthWireCrossSectOption.id === ohl.earthCrossSect?.id ? ohl.earthCrossSect : earthWireCrossSectOption" *ngFor="let earthWireCrossSectOption of earthwirecrosssects; trackBy: trackEarthWireCrossSectById">{{earthWireCrossSectOption.earthWireCrossSection}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-correction-factor-heading">Create or edit a Correction Factor</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!correctionFactor.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="correctionFactor.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_templateName">Template Name</label>
+                    <input type="text" class="form-control" name="templateName" id="field_templateName"
+                        [(ngModel)]="correctionFactor.templateName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_degrees30">Degrees 30</label>
+                    <input type="number" class="form-control" name="degrees30" id="field_degrees30"
+                        [(ngModel)]="correctionFactor.degrees30" required/>
+                    <div [hidden]="!(editForm.controls.degrees30?.dirty && editForm.controls.degrees30?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.degrees30?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.degrees30?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_degrees20">Degrees 20</label>
+                    <input type="number" class="form-control" name="degrees20" id="field_degrees20"
+                        [(ngModel)]="correctionFactor.degrees20" required/>
+                    <div [hidden]="!(editForm.controls.degrees20?.dirty && editForm.controls.degrees20?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.degrees20?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.degrees20?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_degrees10">Degrees 10</label>
+                    <input type="number" class="form-control" name="degrees10" id="field_degrees10"
+                        [(ngModel)]="correctionFactor.degrees10" required/>
+                    <div [hidden]="!(editForm.controls.degrees10?.dirty && editForm.controls.degrees10?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.degrees10?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.degrees10?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_degrees0">Degrees 0</label>
+                    <input type="number" class="form-control" name="degrees0" id="field_degrees0"
+                        [(ngModel)]="correctionFactor.degrees0" required/>
+                    <div [hidden]="!(editForm.controls.degrees0?.dirty && editForm.controls.degrees0?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.degrees0?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.degrees0?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

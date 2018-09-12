@@ -1,0 +1,72 @@
+{
+    "name": "SurgeArrester",
+    "fields": [
+        {
+            "fieldName": "productionYear",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ucur",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "drainageCurrent",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "serial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "picture",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "surgeArresterType",
+            "otherEntityField": "saType"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manufactured",
+            "otherEntityName": "manufacturer",
+            "otherEntityField": "manufactName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "substation",
+            "otherEntityName": "substation",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "field",
+            "otherEntityName": "field",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180830125043",
+    "entityTableName": "surge_arrester",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

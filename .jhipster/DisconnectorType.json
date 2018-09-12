@@ -1,0 +1,19 @@
+{
+    "name": "DisconnectorType",
+    "fields": [
+        {
+            "fieldName": "discType",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180830125031",
+    "entityTableName": "disconnector_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

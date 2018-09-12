@@ -1,0 +1,164 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-employee-heading">Create or edit a Employee</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!employee.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="employee.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="employee.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastname">Lastname</label>
+                    <input type="text" class="form-control" name="lastname" id="field_lastname"
+                        [(ngModel)]="employee.lastname" required/>
+                    <div [hidden]="!(editForm.controls.lastname?.dirty && editForm.controls.lastname?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastname?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telNum1">Tel Num 1</label>
+                    <input type="text" class="form-control" name="telNum1" id="field_telNum1"
+                        [(ngModel)]="employee.telNum1" required/>
+                    <div [hidden]="!(editForm.controls.telNum1?.dirty && editForm.controls.telNum1?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.telNum1?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telNum2">Tel Num 2</label>
+                    <input type="text" class="form-control" name="telNum2" id="field_telNum2"
+                        [(ngModel)]="employee.telNum2" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="employee.email" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="employee.startDate"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.startDate?.dirty && editForm.controls.startDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.startDate?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_endDate">End Date</label>
+                    <div class="input-group">
+                        <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="employee.endDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pictureEmpl">Picture Empl</label>
+                    <input type="text" class="form-control" name="pictureEmpl" id="field_pictureEmpl"
+                        [(ngModel)]="employee.pictureEmpl" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_notes">Notes</label>
+                    <textarea class="form-control" name="notes" id="field_notes"
+                        [(ngModel)]="employee.notes" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_attachments">Attachments</label>
+                    <input type="text" class="form-control" name="attachments" id="field_attachments"
+                        [(ngModel)]="employee.attachments" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_phPrivilage">Ph Privilage</label>
+                    <select class="form-control" id="field_phPrivilage" name="phPrivilage" [(ngModel)]="employee.phPrivilage" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="phonePrivilageOption.id === employee.phPrivilage?.id ? employee.phPrivilage : phonePrivilageOption" *ngFor="let phonePrivilageOption of phoneprivilages; trackBy: trackPhonePrivilageById">{{phonePrivilageOption.privilage}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_group">Group</label>
+                    <select class="form-control" id="field_group" name="group" [(ngModel)]="employee.group" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeGroupOption.id === employee.group?.id ? employee.group : employeeGroupOption" *ngFor="let employeeGroupOption of employeegroups; trackBy: trackEmployeeGroupById">{{employeeGroupOption.groupName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sector">Sector</label>
+                    <select class="form-control" id="field_sector" name="sector" [(ngModel)]="employee.sector" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sectorOption.id === employee.sector?.id ? employee.sector : sectorOption" *ngFor="let sectorOption of sectors; trackBy: trackSectorById">{{sectorOption.sectorName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_departman">Departman</label>
+                    <select class="form-control" id="field_departman" name="departman" [(ngModel)]="employee.departman" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="departmanOption.id === employee.departman?.id ? employee.departman : departmanOption" *ngFor="let departmanOption of departmen; trackBy: trackDepartmanById">{{departmanOption.depName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_jobDesc">Job Desc</label>
+                    <select class="form-control" id="field_jobDesc" name="jobDesc" [(ngModel)]="employee.jobDesc" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="jobOption.id === employee.jobDesc?.id ? employee.jobDesc : jobOption" *ngFor="let jobOption of jobs; trackBy: trackJobById">{{jobOption.jobDescription}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <select class="form-control" id="field_status" name="status" [(ngModel)]="employee.status" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="jobStatusOption.id === employee.status?.id ? employee.status : jobStatusOption" *ngFor="let jobStatusOption of jobstatuses; trackBy: trackJobStatusById">{{jobStatusOption.jobStatus}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_profQualification">Prof Qualification</label>
+                    <select class="form-control" id="field_profQualification" name="profQualification" [(ngModel)]="employee.profQualification" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="qualificationOption.id === employee.profQualification?.id ? employee.profQualification : qualificationOption" *ngFor="let qualificationOption of qualifications; trackBy: trackQualificationById">{{qualificationOption.proffQualification}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_contractType">Contract Type</label>
+                    <select class="form-control" id="field_contractType" name="contractType" [(ngModel)]="employee.contractType" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contractOption.id === employee.contractType?.id ? employee.contractType : contractOption" *ngFor="let contractOption of contracts; trackBy: trackContractById">{{contractOption.contractType}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

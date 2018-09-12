@@ -1,0 +1,19 @@
+{
+    "name": "Power",
+    "fields": [
+        {
+            "fieldName": "power",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180830125023",
+    "entityTableName": "power",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,124 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-voltage-measuring-transformer-heading">Create or edit a Voltage Measuring Transformer</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!voltageMeasuringTransformer.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="voltageMeasuringTransformer.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productionYear">Production Year</label>
+                    <input type="number" class="form-control" name="productionYear" id="field_productionYear"
+                        [(ngModel)]="voltageMeasuringTransformer.productionYear" required/>
+                    <div [hidden]="!(editForm.controls.productionYear?.dirty && editForm.controls.productionYear?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productionYear?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productionYear?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_transmissionRatio">Transmission Ratio</label>
+                    <input type="text" class="form-control" name="transmissionRatio" id="field_transmissionRatio"
+                        [(ngModel)]="voltageMeasuringTransformer.transmissionRatio" required/>
+                    <div [hidden]="!(editForm.controls.transmissionRatio?.dirty && editForm.controls.transmissionRatio?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.transmissionRatio?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_accuracyClass">Accuracy Class</label>
+                    <input type="number" class="form-control" name="accuracyClass" id="field_accuracyClass"
+                        [(ngModel)]="voltageMeasuringTransformer.accuracyClass" required/>
+                    <div [hidden]="!(editForm.controls.accuracyClass?.dirty && editForm.controls.accuracyClass?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.accuracyClass?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.accuracyClass?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nominalPower">Nominal Power</label>
+                    <input type="number" class="form-control" name="nominalPower" id="field_nominalPower"
+                        [(ngModel)]="voltageMeasuringTransformer.nominalPower" required/>
+                    <div [hidden]="!(editForm.controls.nominalPower?.dirty && editForm.controls.nominalPower?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nominalPower?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.nominalPower?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serial">Serial</label>
+                    <input type="text" class="form-control" name="serial" id="field_serial"
+                        [(ngModel)]="voltageMeasuringTransformer.serial" required/>
+                    <div [hidden]="!(editForm.controls.serial?.dirty && editForm.controls.serial?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.serial?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_picture">Picture</label>
+                    <input type="text" class="form-control" name="picture" id="field_picture"
+                        [(ngModel)]="voltageMeasuringTransformer.picture" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="voltageMeasuringTransformer.type" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="vmtTypeOption.id === voltageMeasuringTransformer.type?.id ? voltageMeasuringTransformer.type : vmtTypeOption" *ngFor="let vmtTypeOption of vmttypes; trackBy: trackVmtTypeById">{{vmtTypeOption.vmtType}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manufactured">Manufactured</label>
+                    <select class="form-control" id="field_manufactured" name="manufactured" [(ngModel)]="voltageMeasuringTransformer.manufactured" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="manufacturerOption.id === voltageMeasuringTransformer.manufactured?.id ? voltageMeasuringTransformer.manufactured : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.manufactName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation">Substation</label>
+                    <select class="form-control" id="field_substation" name="substation" [(ngModel)]="voltageMeasuringTransformer.substation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === voltageMeasuringTransformer.substation?.id ? voltageMeasuringTransformer.substation : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_field">Field</label>
+                    <select class="form-control" id="field_field" name="field" [(ngModel)]="voltageMeasuringTransformer.field" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fieldOption.id === voltageMeasuringTransformer.field?.id ? voltageMeasuringTransformer.field : fieldOption" *ngFor="let fieldOption of fields; trackBy: trackFieldById">{{fieldOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

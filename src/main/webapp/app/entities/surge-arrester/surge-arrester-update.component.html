@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-surge-arrester-heading">Create or edit a Surge Arrester</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!surgeArrester.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="surgeArrester.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productionYear">Production Year</label>
+                    <input type="number" class="form-control" name="productionYear" id="field_productionYear"
+                        [(ngModel)]="surgeArrester.productionYear" required/>
+                    <div [hidden]="!(editForm.controls.productionYear?.dirty && editForm.controls.productionYear?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productionYear?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productionYear?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ucur">Ucur</label>
+                    <input type="text" class="form-control" name="ucur" id="field_ucur"
+                        [(ngModel)]="surgeArrester.ucur" required/>
+                    <div [hidden]="!(editForm.controls.ucur?.dirty && editForm.controls.ucur?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ucur?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_drainageCurrent">Drainage Current</label>
+                    <input type="number" class="form-control" name="drainageCurrent" id="field_drainageCurrent"
+                        [(ngModel)]="surgeArrester.drainageCurrent" required/>
+                    <div [hidden]="!(editForm.controls.drainageCurrent?.dirty && editForm.controls.drainageCurrent?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.drainageCurrent?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.drainageCurrent?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serial">Serial</label>
+                    <input type="text" class="form-control" name="serial" id="field_serial"
+                        [(ngModel)]="surgeArrester.serial" required/>
+                    <div [hidden]="!(editForm.controls.serial?.dirty && editForm.controls.serial?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.serial?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_picture">Picture</label>
+                    <input type="text" class="form-control" name="picture" id="field_picture"
+                        [(ngModel)]="surgeArrester.picture" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="surgeArrester.type" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="surgeArresterTypeOption.id === surgeArrester.type?.id ? surgeArrester.type : surgeArresterTypeOption" *ngFor="let surgeArresterTypeOption of surgearrestertypes; trackBy: trackSurgeArresterTypeById">{{surgeArresterTypeOption.saType}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manufactured">Manufactured</label>
+                    <select class="form-control" id="field_manufactured" name="manufactured" [(ngModel)]="surgeArrester.manufactured" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="manufacturerOption.id === surgeArrester.manufactured?.id ? surgeArrester.manufactured : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.manufactName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation">Substation</label>
+                    <select class="form-control" id="field_substation" name="substation" [(ngModel)]="surgeArrester.substation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === surgeArrester.substation?.id ? surgeArrester.substation : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_field">Field</label>
+                    <select class="form-control" id="field_field" name="field" [(ngModel)]="surgeArrester.field" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fieldOption.id === surgeArrester.field?.id ? surgeArrester.field : fieldOption" *ngFor="let fieldOption of fields; trackBy: trackFieldById">{{fieldOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

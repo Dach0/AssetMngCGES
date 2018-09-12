@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-circuit-breaker-heading">Create or edit a Circuit Breaker</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!circuitBreaker.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="circuitBreaker.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productionYear">Production Year</label>
+                    <input type="number" class="form-control" name="productionYear" id="field_productionYear"
+                        [(ngModel)]="circuitBreaker.productionYear" required/>
+                    <div [hidden]="!(editForm.controls.productionYear?.dirty && editForm.controls.productionYear?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productionYear?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productionYear?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_current">Current</label>
+                    <input type="number" class="form-control" name="current" id="field_current"
+                        [(ngModel)]="circuitBreaker.current" required/>
+                    <div [hidden]="!(editForm.controls.current?.dirty && editForm.controls.current?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.current?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.current?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_shortCircuitCurrent">Short Circuit Current</label>
+                    <input type="number" class="form-control" name="shortCircuitCurrent" id="field_shortCircuitCurrent"
+                        [(ngModel)]="circuitBreaker.shortCircuitCurrent" required/>
+                    <div [hidden]="!(editForm.controls.shortCircuitCurrent?.dirty && editForm.controls.shortCircuitCurrent?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.shortCircuitCurrent?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.shortCircuitCurrent?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serial">Serial</label>
+                    <input type="text" class="form-control" name="serial" id="field_serial"
+                        [(ngModel)]="circuitBreaker.serial" required/>
+                    <div [hidden]="!(editForm.controls.serial?.dirty && editForm.controls.serial?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.serial?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_picture">Picture</label>
+                    <input type="text" class="form-control" name="picture" id="field_picture"
+                        [(ngModel)]="circuitBreaker.picture" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_drive">Drive</label>
+                    <select class="form-control" id="field_drive" name="drive" [(ngModel)]="circuitBreaker.drive" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="circuitBreakerDriveOption.id === circuitBreaker.drive?.id ? circuitBreaker.drive : circuitBreakerDriveOption" *ngFor="let circuitBreakerDriveOption of circuitbreakerdrives; trackBy: trackCircuitBreakerDriveById">{{circuitBreakerDriveOption.cbDrive}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="circuitBreaker.type" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="circuitBreakerTypeOption.id === circuitBreaker.type?.id ? circuitBreaker.type : circuitBreakerTypeOption" *ngFor="let circuitBreakerTypeOption of circuitbreakertypes; trackBy: trackCircuitBreakerTypeById">{{circuitBreakerTypeOption.cbType}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manufactured">Manufactured</label>
+                    <select class="form-control" id="field_manufactured" name="manufactured" [(ngModel)]="circuitBreaker.manufactured" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="manufacturerOption.id === circuitBreaker.manufactured?.id ? circuitBreaker.manufactured : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.manufactName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation">Substation</label>
+                    <select class="form-control" id="field_substation" name="substation" [(ngModel)]="circuitBreaker.substation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === circuitBreaker.substation?.id ? circuitBreaker.substation : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_field">Field</label>
+                    <select class="form-control" id="field_field" name="field" [(ngModel)]="circuitBreaker.field" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fieldOption.id === circuitBreaker.field?.id ? circuitBreaker.field : fieldOption" *ngFor="let fieldOption of fields; trackBy: trackFieldById">{{fieldOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

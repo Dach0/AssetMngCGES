@@ -1,0 +1,19 @@
+{
+    "name": "ElementStatus",
+    "fields": [
+        {
+            "fieldName": "elementStatus",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180830125026",
+    "entityTableName": "element_status",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

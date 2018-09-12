@@ -1,0 +1,154 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-asset-heading">Create or edit a Asset</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!asset.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="asset.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="asset.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manufacturer">Manufacturer</label>
+                    <input type="text" class="form-control" name="manufacturer" id="field_manufacturer"
+                        [(ngModel)]="asset.manufacturer" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_brand">Brand</label>
+                    <input type="text" class="form-control" name="brand" id="field_brand"
+                        [(ngModel)]="asset.brand" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_model">Model</label>
+                    <input type="text" class="form-control" name="model" id="field_model"
+                        [(ngModel)]="asset.model" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_picture">Picture</label>
+                    <input type="text" class="form-control" name="picture" id="field_picture"
+                        [(ngModel)]="asset.picture" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serialNumber">Serial Number</label>
+                    <input type="text" class="form-control" name="serialNumber" id="field_serialNumber"
+                        [(ngModel)]="asset.serialNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateOfObligation">Date Of Obligation</label>
+                    <div class="input-group">
+                        <input id="field_dateOfObligation" type="text" class="form-control" name="dateOfObligation" ngbDatepicker  #dateOfObligationDp="ngbDatepicker" [(ngModel)]="asset.dateOfObligation"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateOfObligationDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_purchasePrice">Purchase Price</label>
+                    <input type="number" class="form-control" name="purchasePrice" id="field_purchasePrice"
+                        [(ngModel)]="asset.purchasePrice" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_marketPrice">Market Price</label>
+                    <input type="number" class="form-control" name="marketPrice" id="field_marketPrice"
+                        [(ngModel)]="asset.marketPrice" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_scrapPrice">Scrap Price</label>
+                    <input type="number" class="form-control" name="scrapPrice" id="field_scrapPrice"
+                        [(ngModel)]="asset.scrapPrice" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_purchasedDate">Purchased Date</label>
+                    <div class="input-group">
+                        <input id="field_purchasedDate" type="text" class="form-control" name="purchasedDate" ngbDatepicker  #purchasedDateDp="ngbDatepicker" [(ngModel)]="asset.purchasedDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="purchasedDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_inServiceDate">In Service Date</label>
+                    <div class="input-group">
+                        <input id="field_inServiceDate" type="text" class="form-control" name="inServiceDate" ngbDatepicker  #inServiceDateDp="ngbDatepicker" [(ngModel)]="asset.inServiceDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="inServiceDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_warrenty">Warrenty</label>
+                    <div class="input-group">
+                        <input id="field_warrenty" type="text" class="form-control" name="warrenty" ngbDatepicker  #warrentyDp="ngbDatepicker" [(ngModel)]="asset.warrenty"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="warrentyDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_notes">Notes</label>
+                    <textarea class="form-control" name="notes" id="field_notes"
+                        [(ngModel)]="asset.notes" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_attachments">Attachments</label>
+                    <input type="text" class="form-control" name="attachments" id="field_attachments"
+                        [(ngModel)]="asset.attachments" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="asset.type" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeOption.id === asset.type?.id ? asset.type : typeOption" *ngFor="let typeOption of types; trackBy: trackTypeById">{{typeOption.typeName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_location">Location</label>
+                    <select class="form-control" id="field_location" name="location" [(ngModel)]="asset.location" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="locationOption.id === asset.location?.id ? asset.location : locationOption" *ngFor="let locationOption of locations; trackBy: trackLocationById">{{locationOption.locationName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <select class="form-control" id="field_status" name="status" [(ngModel)]="asset.status" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="assetStatusOption.id === asset.status?.id ? asset.status : assetStatusOption" *ngFor="let assetStatusOption of assetstatuses; trackBy: trackAssetStatusById">{{assetStatusOption.status}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_condition">Condition</label>
+                    <select class="form-control" id="field_condition" name="condition" [(ngModel)]="asset.condition" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="assetConditionOption.id === asset.condition?.id ? asset.condition : assetConditionOption" *ngFor="let assetConditionOption of assetconditions; trackBy: trackAssetConditionById">{{assetConditionOption.conditionDesc}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_asset">Asset</label>
+                    <select class="form-control" id="field_asset" name="asset" [(ngModel)]="asset.asset" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeOption.id === asset.asset?.id ? asset.asset : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

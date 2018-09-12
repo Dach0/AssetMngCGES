@@ -1,0 +1,88 @@
+<div>
+    <h2 id="page-heading">
+        <span>Current Measuring Transformers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-current-measuring-transformer" [routerLink]="['/current-measuring-transformer/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Current Measuring Transformer
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="currentMeasuringTransformers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Production Year</span></th>
+            <th><span>Transmission Ratio</span></th>
+            <th><span>Accuracy Class</span></th>
+            <th><span>Nominal Power</span></th>
+            <th><span>Serial</span></th>
+            <th><span>Picture</span></th>
+            <th><span>Type</span></th>
+            <th><span>Manufactured</span></th>
+            <th><span>Substation</span></th>
+            <th><span>Field</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let currentMeasuringTransformer of currentMeasuringTransformers ;trackBy: trackId">
+                <td><a [routerLink]="['/current-measuring-transformer', currentMeasuringTransformer.id, 'view' ]">{{currentMeasuringTransformer.id}}</a></td>
+                <td>{{currentMeasuringTransformer.productionYear}}</td>
+                <td>{{currentMeasuringTransformer.transmissionRatio}}</td>
+                <td>{{currentMeasuringTransformer.accuracyClass}}</td>
+                <td>{{currentMeasuringTransformer.nominalPower}}</td>
+                <td>{{currentMeasuringTransformer.serial}}</td>
+                <td>{{currentMeasuringTransformer.picture}}</td>
+                <td>
+                    <div *ngIf="currentMeasuringTransformer.type">
+                        <a [routerLink]="['../cmt-type', currentMeasuringTransformer.type?.id, 'view' ]" >{{currentMeasuringTransformer.type?.cmtType}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="currentMeasuringTransformer.manufactured">
+                        <a [routerLink]="['../manufacturer', currentMeasuringTransformer.manufactured?.id, 'view' ]" >{{currentMeasuringTransformer.manufactured?.manufactName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="currentMeasuringTransformer.substation">
+                        <a [routerLink]="['../substation', currentMeasuringTransformer.substation?.id, 'view' ]" >{{currentMeasuringTransformer.substation?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="currentMeasuringTransformer.field">
+                        <a [routerLink]="['../field', currentMeasuringTransformer.field?.id, 'view' ]" >{{currentMeasuringTransformer.field?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/current-measuring-transformer', currentMeasuringTransformer.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/current-measuring-transformer', currentMeasuringTransformer.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'current-measuring-transformer/'+ currentMeasuringTransformer.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

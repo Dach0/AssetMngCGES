@@ -1,0 +1,147 @@
+{
+    "name": "Ohl",
+    "fields": [
+        {
+            "fieldName": "ohlNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 45
+        },
+        {
+            "fieldName": "operationYear",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lengthTotal",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lengthInMne",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rOhmPerPhaseInMne",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "rOhmPerPhaseTotal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "xOhmPerPhaseInMne",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "xOhmPerPhaseTotal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "bOhmPerPhaseInMne",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "bOhmPerPhaseTotal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "r0OhmPerPhaseInMne",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "r0OhmPerPhaseTotal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "x0OhmPerPhaseInMne",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "x0OhmPerPhaseTotal",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "pylonNumber",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "isolatorNumber",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "substation1",
+            "otherEntityName": "substation",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "substation2",
+            "otherEntityName": "substation",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "tConnection",
+            "otherEntityName": "tconnection",
+            "otherEntityField": "tConnSubStationName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "voltageLevel",
+            "otherEntityName": "voltageLevel",
+            "otherEntityField": "voltageLevel"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "ohlConstructionPart",
+            "otherEntityName": "pylonType",
+            "otherEntityField": "pylonType"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "thermalLimit",
+            "otherEntityName": "thermalLimit",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "condCrossSect",
+            "otherEntityName": "conductorCrossSect",
+            "otherEntityField": "conductorCrossSection"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "earthCrossSect",
+            "otherEntityName": "earthWireCrossSect",
+            "otherEntityField": "earthWireCrossSection"
+        }
+    ],
+    "changelogDate": "20180830125008",
+    "entityTableName": "ohl",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

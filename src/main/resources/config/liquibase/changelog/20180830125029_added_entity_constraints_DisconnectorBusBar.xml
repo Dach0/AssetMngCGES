@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity DisconnectorBusBar.
+    -->
+    <changeSet id="20180830125029-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="drive_id"
+                                 baseTableName="disconnector_bus_bar"
+                                 constraintName="fk_disconnector_bus_bar_drive_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="disconnector_drive"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="disconnector_bus_bar"
+                                 constraintName="fk_disconnector_bus_bar_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="disconnector_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="manufactured_id"
+                                 baseTableName="disconnector_bus_bar"
+                                 constraintName="fk_disconnector_bus_bar_manufactured_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manufacturer"/>
+
+        <addForeignKeyConstraint baseColumnNames="substation_id"
+                                 baseTableName="disconnector_bus_bar"
+                                 constraintName="fk_disconnector_bus_bar_substation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="substation"/>
+
+        <addForeignKeyConstraint baseColumnNames="field_id"
+                                 baseTableName="disconnector_bus_bar"
+                                 constraintName="fk_disconnector_bus_bar_field_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="field"/>
+
+    </changeSet>
+</databaseChangeLog>

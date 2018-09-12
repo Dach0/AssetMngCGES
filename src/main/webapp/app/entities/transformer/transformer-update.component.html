@@ -1,0 +1,196 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-transformer-heading">Create or edit a Transformer</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!transformer.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="transformer.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productionYear">Production Year</label>
+                    <input type="number" class="form-control" name="productionYear" id="field_productionYear"
+                        [(ngModel)]="transformer.productionYear" required/>
+                    <div [hidden]="!(editForm.controls.productionYear?.dirty && editForm.controls.productionYear?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productionYear?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productionYear?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_installationYear">Installation Year</label>
+                    <input type="number" class="form-control" name="installationYear" id="field_installationYear"
+                        [(ngModel)]="transformer.installationYear" required/>
+                    <div [hidden]="!(editForm.controls.installationYear?.dirty && editForm.controls.installationYear?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.installationYear?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.installationYear?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_shortCircuitVoltage">Short Circuit Voltage</label>
+                    <input type="number" class="form-control" name="shortCircuitVoltage" id="field_shortCircuitVoltage"
+                        [(ngModel)]="transformer.shortCircuitVoltage" required/>
+                    <div [hidden]="!(editForm.controls.shortCircuitVoltage?.dirty && editForm.controls.shortCircuitVoltage?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.shortCircuitVoltage?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.shortCircuitVoltage?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isEarthGrounding">Is Earth Grounding</label>
+                    <input type="checkbox" class="form-control" name="isEarthGrounding" id="field_isEarthGrounding"
+                        [(ngModel)]="transformer.isEarthGrounding" />
+                    <div [hidden]="!(editForm.controls.isEarthGrounding?.dirty && editForm.controls.isEarthGrounding?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.isEarthGrounding?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_picture">Picture</label>
+                    <input type="text" class="form-control" name="picture" id="field_picture"
+                        [(ngModel)]="transformer.picture" required/>
+                    <div [hidden]="!(editForm.controls.picture?.dirty && editForm.controls.picture?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.picture?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serialNumber">Serial Number</label>
+                    <input type="text" class="form-control" name="serialNumber" id="field_serialNumber"
+                        [(ngModel)]="transformer.serialNumber" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_condition">Condition</label>
+                    <select class="form-control" id="field_condition" name="condition" [(ngModel)]="transformer.condition" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="elementConditionOption.id === transformer.condition?.id ? transformer.condition : elementConditionOption" *ngFor="let elementConditionOption of elementconditions; trackBy: trackElementConditionById">{{elementConditionOption.elementCondition}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_status">Status</label>
+                    <select class="form-control" id="field_status" name="status" [(ngModel)]="transformer.status" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="elementStatusOption.id === transformer.status?.id ? transformer.status : elementStatusOption" *ngFor="let elementStatusOption of elementstatuses; trackBy: trackElementStatusById">{{elementStatusOption.elementStatus}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_coupling">Coupling</label>
+                    <select class="form-control" id="field_coupling" name="coupling" [(ngModel)]="transformer.coupling"  required>
+                        <option *ngIf="!editForm.value.coupling" [ngValue]="null" selected></option>
+                        <option [ngValue]="couplingOption.id === transformer.coupling?.id ? transformer.coupling : couplingOption" *ngFor="let couplingOption of couplings; trackBy: trackCouplingById">{{couplingOption.coupling}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.coupling?.dirty && editForm.controls.coupling?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.coupling?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_power">Power</label>
+                    <select class="form-control" id="field_power" name="power" [(ngModel)]="transformer.power"  required>
+                        <option *ngIf="!editForm.value.power" [ngValue]="null" selected></option>
+                        <option [ngValue]="powerOption.id === transformer.power?.id ? transformer.power : powerOption" *ngFor="let powerOption of powers; trackBy: trackPowerById">{{powerOption.power}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.power?.dirty && editForm.controls.power?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.power?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_transRatio">Trans Ratio</label>
+                    <select class="form-control" id="field_transRatio" name="transRatio" [(ngModel)]="transformer.transRatio"  required>
+                        <option *ngIf="!editForm.value.transRatio" [ngValue]="null" selected></option>
+                        <option [ngValue]="transmissionRatioOption.id === transformer.transRatio?.id ? transformer.transRatio : transmissionRatioOption" *ngFor="let transmissionRatioOption of transmissionratios; trackBy: trackTransmissionRatioById">{{transmissionRatioOption.transmissionRatio}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.transRatio?.dirty && editForm.controls.transRatio?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.transRatio?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manufacturer">Manufacturer</label>
+                    <select class="form-control" id="field_manufacturer" name="manufacturer" [(ngModel)]="transformer.manufacturer"  required>
+                        <option *ngIf="!editForm.value.manufacturer" [ngValue]="null" selected></option>
+                        <option [ngValue]="manufacturerOption.id === transformer.manufacturer?.id ? transformer.manufacturer : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.manufactName}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.manufacturer?.dirty && editForm.controls.manufacturer?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.manufacturer?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="transformer.type"  required>
+                        <option *ngIf="!editForm.value.type" [ngValue]="null" selected></option>
+                        <option [ngValue]="transformerTypeOption.id === transformer.type?.id ? transformer.type : transformerTypeOption" *ngFor="let transformerTypeOption of transformertypes; trackBy: trackTransformerTypeById">{{transformerTypeOption.type}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.type?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_service">Service</label>
+                    <select class="form-control" id="field_service" name="service" [(ngModel)]="transformer.service" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="serviceOption.id === transformer.service?.id ? transformer.service : serviceOption" *ngFor="let serviceOption of services; trackBy: trackServiceById">{{serviceOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_redniBroj">Redni Broj</label>
+                    <select class="form-control" id="field_redniBroj" name="redniBroj" [(ngModel)]="transformer.redniBroj" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="transformatorNumberOption.id === transformer.redniBroj?.id ? transformer.redniBroj : transformatorNumberOption" *ngFor="let transformatorNumberOption of transformatornumbers; trackBy: trackTransformatorNumberById">{{transformatorNumberOption.tNumber}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation">Substation</label>
+                    <select class="form-control" id="field_substation" name="substation" [(ngModel)]="transformer.substation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === transformer.substation?.id ? transformer.substation : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

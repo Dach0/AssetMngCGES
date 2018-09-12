@@ -1,0 +1,120 @@
+{
+    "name": "Transformer",
+    "fields": [
+        {
+            "fieldName": "productionYear",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "installationYear",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "shortCircuitVoltage",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "isEarthGrounding",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "picture",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "serialNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "condition",
+            "otherEntityName": "elementCondition",
+            "otherEntityField": "elementCondition"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "status",
+            "otherEntityName": "elementStatus",
+            "otherEntityField": "elementStatus"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "coupling",
+            "otherEntityName": "coupling",
+            "otherEntityField": "coupling"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "power",
+            "otherEntityName": "power",
+            "otherEntityField": "power"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "transRatio",
+            "otherEntityName": "transmissionRatio",
+            "otherEntityField": "transmissionRatio"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "manufacturer",
+            "otherEntityName": "manufacturer",
+            "otherEntityField": "manufactName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": "required",
+            "relationshipName": "type",
+            "otherEntityName": "transformerType",
+            "otherEntityField": "type"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "service",
+            "otherEntityName": "service",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "redniBroj",
+            "otherEntityName": "transformatorNumber",
+            "otherEntityField": "tNumber"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "substation",
+            "otherEntityName": "substation",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180830125019",
+    "entityTableName": "transformer",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

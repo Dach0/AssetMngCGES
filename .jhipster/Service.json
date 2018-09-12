@@ -1,0 +1,69 @@
+{
+    "name": "Service",
+    "fields": [
+        {
+            "fieldName": "serviceDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "repairPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "sparePartsPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "servicedFrom",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "servicedTo",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "attachments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "doneByComp",
+            "otherEntityName": "serviceCompany",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "doneByEmpl",
+            "otherEntityName": "employee",
+            "otherEntityField": "email"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "serviceType",
+            "otherEntityField": "typeDescription"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "transformer",
+            "otherEntityName": "transformer",
+            "otherEntityRelationshipName": "service"
+        }
+    ],
+    "changelogDate": "20180830125102",
+    "entityTableName": "service",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

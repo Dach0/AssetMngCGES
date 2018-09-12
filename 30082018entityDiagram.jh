@@ -1,0 +1,451 @@
+
+entity Ohl {
+	ohlNumber String maxlength(45)
+    operationYear Integer required
+    lengthTotal Double required
+    lengthInMne Double required
+    rOhmPerPhaseInMne Double
+    rOhmPerPhaseTotal Double
+    xOhmPerPhaseInMne Double
+    xOhmPerPhaseTotal Double
+    bOhmPerPhaseInMne Double
+    bOhmPerPhaseTotal Double
+    r0OhmPerPhaseInMne Double
+    r0OhmPerPhaseTotal Double
+    x0OhmPerPhaseInMne Double
+    x0OhmPerPhaseTotal Double
+    pylonNumber Integer required
+    isolatorNumber Integer required   
+}
+
+entity VoltageLevel {
+	voltageLevel Integer required
+}
+
+entity ConductorCrossSect{
+	conductorCrossSection String required
+}
+
+entity EarthWireCrossSect{
+	earthWireCrossSection String required
+}
+    
+relationship ManyToOne {
+	Ohl{substation1(name)} to Substation
+    Ohl{substation2(name)} to Substation
+    Ohl{tConnection(tConnSubStationName)} to Tconnection
+    Ohl{voltageLevel(voltageLevel)} to VoltageLevel
+    Ohl{ohlConstructionPart(pylonType)} to PylonType
+    Ohl{thermalLimit} to ThermalLimit
+    Ohl{condCrossSect(conductorCrossSection)} to ConductorCrossSect
+    Ohl{earthCrossSect(earthWireCrossSection)} to EarthWireCrossSect
+    Tconnection{substation1(name)} to Substation
+    Tconnection{substation2(name)} to Substation
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Tconnection {
+	tConnSubStationName String
+}
+
+entity PylonType{
+	pylonType String maxlength(45) required
+}
+
+entity CorrectionFactor {
+	templateName String
+	degrees30  Double required
+    degrees20  Double required
+    degrees10  Double required
+    degrees0  Double required
+}
+
+relationship ManyToOne{
+	VoltageLevel{correctionFactor(templateName)} to CorrectionFactor
+}
+
+entity ThermalLimit {
+	templateName String required
+	iMaxSummer Integer required
+    iMaxWinter Integer required
+    pMaxSummer Integer required
+    pMaxWinter Integer required
+    thermalLimit Integer
+}
+
+entity Substation {
+	name String maxlength(100) required
+    operationYear Integer
+}
+
+entity Facility{
+	// imace ime trafostanice i
+	// Voltage level - pa ce se pretrazivati po Substation and VoltageLevel 
+	inOperationSince Integer
+    power Integer
+    numOfTransformers Integer
+    busbars String
+    numOfFields Integer
+}
+
+entity FacilityMaintainingCo{
+	name String
+}
+
+relationship ManyToOne{
+	Facility{voltageLevel(voltageLevel)} to VoltageLevel
+	Substation{facility(name)} to Facility{substation(name)}
+	Facility{maintaining(name)} to FacilityMaintainingCo
+}
+
+
+entity Transformer{
+    productionYear Integer required
+    installationYear Integer required
+    shortCircuitVoltage Double required
+    isEarthGrounding Boolean required
+    picture String required
+    serialNumber String
+}
+
+entity TransformerType{
+	type String
+}
+
+entity TransformatorNumber{
+	tNumber String //T1, T2...
+}
+
+entity Manufacturer{
+ manufactName String
+}
+
+entity Power{
+ power String
+}
+
+entity TransmissionRatio{
+ transmissionRatio String
+}
+
+entity Coupling{
+ coupling String
+}
+
+entity ElementStatus{
+ 	elementStatus String // in use, in storage, out for repair...
+}
+
+entity ElementCondition{
+ 	elementCondition String // new, good, fair, poor....
+}
+
+relationship ManyToOne{
+ Transformer{condition(elementCondition)} to ElementCondition
+ Transformer{status(elementStatus)} to ElementStatus
+ Transformer{coupling(coupling) required} to Coupling
+ Transformer{power(power) required} to Power
+ Transformer{transRatio(transmissionRatio) required} to TransmissionRatio
+ Transformer{manufacturer(manufactName) required} to Manufacturer
+ Transformer{type(type) required} to TransformerType
+ Transformer{service} to Service{transformer(serialNumber)}
+ Transformer{redniBroj(tNumber)} to TransformatorNumber
+ Transformer{substation(name)} to Substation
+}
+
+entity Field {
+	name String
+}
+
+entity DisconnectorBusBar{
+    productionYear Integer required
+    current Integer required
+    serial String required
+    picture String
+}
+
+entity DisconnectorLineExit{
+    productionYear Integer required
+    current Integer required
+    serial String required
+    picture String
+}
+
+entity DisconnectorType{
+ 	discType String
+}
+
+entity DisconnectorDrive{
+ 	discDrive String
+}
+
+entity CircuitBreaker{
+    productionYear Integer required
+    current Integer required
+    shortCircuitCurrent Integer required
+    serial String required
+    picture String
+}
+
+entity CircuitBreakerType{
+ 	cbType String
+}
+
+entity CircuitBreakerDrive{
+ 	cbDrive String
+}
+
+entity CurrentMeasuringTransformer{
+    productionYear Integer required
+    transmissionRatio String required
+    accuracyClass Double required
+    nominalPower Integer required
+    serial String required
+    picture String
+}
+
+entity CmtType{
+	cmtType String
+}
+
+entity VoltageMeasuringTransformer{
+    productionYear Integer required
+    transmissionRatio String required
+    accuracyClass Double required
+    nominalPower Integer required
+    serial String required
+    picture String
+}
+
+entity VmtType{
+	vmtType String
+}
+
+entity GroundingSticks{
+    productionYear Integer required
+    current Integer required
+    serial String required
+    picture String
+}
+
+entity GroundSticksType{
+	gsType String
+}
+
+entity GroundSticksDrive{
+	gsDrive String
+}
+
+entity SurgeArrester{
+    productionYear Integer required
+    ucur String required
+    drainageCurrent Integer required
+    serial String required
+    picture String
+}
+
+entity SurgeArresterType{
+	saType String
+}
+
+
+relationship ManyToOne{
+	DisconnectorBusBar{drive(discDrive)} to DisconnectorDrive
+	DisconnectorBusBar{type(discType)} to DisconnectorType
+ 	DisconnectorBusBar{manufactured(manufactName)} to Manufacturer
+    DisconnectorBusBar{substation(name)} to Substation
+	DisconnectorBusBar{field(name)} to Field
+    DisconnectorLineExit{drive(discDrive)} to DisconnectorDrive
+	DisconnectorLineExit{type(discType)} to DisconnectorType
+ 	DisconnectorLineExit{manufactured(manufactName)} to Manufacturer
+    DisconnectorLineExit{substation(name)} to Substation
+	DisconnectorLineExit{field(name)} to Field
+    CircuitBreaker{drive(cbDrive)} to CircuitBreakerDrive
+    CircuitBreaker{type(cbType)} to CircuitBreakerType
+    CircuitBreaker{manufactured(manufactName)} to Manufacturer
+    CircuitBreaker{substation(name)} to Substation
+	CircuitBreaker{field(name)} to Field
+    CurrentMeasuringTransformer{type(cmtType)} to CmtType
+    CurrentMeasuringTransformer{manufactured(manufactName)} to Manufacturer
+    CurrentMeasuringTransformer{substation(name)} to Substation
+	CurrentMeasuringTransformer{field(name)} to Field
+    VoltageMeasuringTransformer{type(vmtType)} to VmtType
+    VoltageMeasuringTransformer{manufactured(manufactName)} to Manufacturer
+    VoltageMeasuringTransformer{substation(name)} to Substation
+    VoltageMeasuringTransformer{field(name)} to Field
+    GroundingSticks{drive(gsDrive)} to GroundSticksDrive
+    GroundingSticks{type(gsType)} to GroundSticksType
+    GroundingSticks{manufactured(manufactName)} to Manufacturer
+    GroundingSticks{substation(name)} to Substation
+    GroundingSticks{field(name)} to Field
+    SurgeArrester{type(saType)} to SurgeArresterType
+    SurgeArrester{manufactured(manufactName)} to Manufacturer
+    SurgeArrester{substation(name)} to Substation
+    SurgeArrester{field(name)} to Field
+}
+
+entity Employee{
+	name String required
+    lastname String required
+    telNum1 String required
+    telNum2 String
+    email String
+    startDate LocalDate required
+    endDate LocalDate
+    pictureEmpl String
+    notes TextBlob
+    attachments String
+}
+
+entity PhonePrivilage{
+	privilage String
+}
+entity EmployeeGroup{
+ 	groupName String required
+}
+//Sluzba na nasem
+entity Sector{
+	sectorName String required
+}
+
+entity Job{
+	jobDescription String required
+}
+
+entity JobStatus{
+	jobStatus String required //aktivan neaktivan
+}
+
+entity Qualification{
+	proffQualification String required
+}
+
+entity Contract{
+	contractType String required
+    }
+
+entity Departman{
+	depName String
+}
+
+relationship ManyToOne{
+	Employee{phPrivilage(privilage)} to PhonePrivilage
+	Employee{group(groupName)} to EmployeeGroup
+    Employee{sector(sectorName)} to Sector
+    Employee{departman(depName)} to Departman
+    Employee{jobDesc(jobDescription)} to Job
+    Employee{status(jobStatus)} to JobStatus
+    Employee{profQualification(proffQualification)} to Qualification
+    Employee{contractType(contractType)} to Contract
+    
+}
+
+entity BoardOfDirectors{
+ 	startDate LocalDate
+    endDate LocalDate
+}
+
+entity BoardMember{
+	name String required
+    lastName String required
+    phone String
+    email String
+    picture String
+}
+
+entity TitleInBoard{
+	title String
+}
+
+relationship ManyToOne{
+	BoardMember{boardTitle(title)} to TitleInBoard
+    BoardMember{qualification(proffQualification)} to Qualification
+}
+
+relationship ManyToMany{
+	BoardOfDirectors{executive(email)} to BoardMember
+    BoardOfDirectors{ExecAssistent(email)} to BoardMember
+    BoardOfDirectors{member1(email)} to BoardMember
+    BoardOfDirectors{member2(email)} to BoardMember
+    BoardOfDirectors{member3(email)} to BoardMember
+    BoardOfDirectors{member4(email)} to BoardMember
+    BoardOfDirectors{member5(email)} to BoardMember
+}
+
+entity Asset{
+	description String
+    manufacturer String
+    brand String
+    model String
+    picture String
+    serialNumber String
+    dateOfObligation LocalDate
+    purchasePrice Double
+    marketPrice Double
+    scrapPrice Double
+    purchasedDate LocalDate
+    inServiceDate LocalDate
+    warrenty LocalDate
+    notes TextBlob
+    attachments String
+    
+}
+
+entity Type{
+	typeName String
+}
+
+entity Location{
+	locationName String
+}
+
+entity AssetStatus{
+	status String
+}
+
+entity AssetCondition{
+	conditionDesc String
+}
+
+entity Service{
+	serviceDescription String
+    repairPrice Double
+    sparePartsPrice Double
+    servicedFrom LocalDate
+    servicedTo LocalDate
+    attachments String
+    notes TextBlob
+}
+
+entity ServiceType{
+	typeDescription String
+}
+
+entity ServiceCompany{
+	companyName String
+}
+
+relationship ManyToOne{
+	Service{doneByComp(name)} to ServiceCompany
+	Service{doneByEmpl(email)} to Employee
+	Service{type(typeDescription)} to ServiceType
+	Asset{type(typeName)} to Type
+    Asset{location(locationName)} to Location
+    Asset{status(status)} to AssetStatus
+    Asset{condition(conditionDesc)} to AssetCondition
+    Asset to Employee //zaduzio
+}
+
+
+
+// Set pagination options
+paginate Employee with infinite-scroll
+//paginate Job with pagination
+
+//dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+// Set an angular suffix
+//angularSuffix * with mySuffix

@@ -1,0 +1,79 @@
+{
+    "name": "VoltageMeasuringTransformer",
+    "fields": [
+        {
+            "fieldName": "productionYear",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "transmissionRatio",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "accuracyClass",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nominalPower",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "serial",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "picture",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "vmtType",
+            "otherEntityField": "vmtType"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manufactured",
+            "otherEntityName": "manufacturer",
+            "otherEntityField": "manufactName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "substation",
+            "otherEntityName": "substation",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "field",
+            "otherEntityName": "field",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180830125038",
+    "entityTableName": "voltage_measuring_transformer",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

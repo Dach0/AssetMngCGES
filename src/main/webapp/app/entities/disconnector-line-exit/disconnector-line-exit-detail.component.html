@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="disconnectorLineExit">
+            <h2><span>Disconnector Line Exit</span> {{disconnectorLineExit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Production Year</span></dt>
+                <dd>
+                    <span>{{disconnectorLineExit.productionYear}}</span>
+                </dd>
+                <dt><span>Current</span></dt>
+                <dd>
+                    <span>{{disconnectorLineExit.current}}</span>
+                </dd>
+                <dt><span>Serial</span></dt>
+                <dd>
+                    <span>{{disconnectorLineExit.serial}}</span>
+                </dd>
+                <dt><span>Picture</span></dt>
+                <dd>
+                    <span>{{disconnectorLineExit.picture}}</span>
+                </dd>
+                <dt><span>Drive</span></dt>
+                <dd>
+                    <div *ngIf="disconnectorLineExit.drive">
+                        <a [routerLink]="['/disconnector-drive', disconnectorLineExit.drive?.id, 'view']">{{disconnectorLineExit.drive?.discDrive}}</a>
+                    </div>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <div *ngIf="disconnectorLineExit.type">
+                        <a [routerLink]="['/disconnector-type', disconnectorLineExit.type?.id, 'view']">{{disconnectorLineExit.type?.discType}}</a>
+                    </div>
+                </dd>
+                <dt><span>Manufactured</span></dt>
+                <dd>
+                    <div *ngIf="disconnectorLineExit.manufactured">
+                        <a [routerLink]="['/manufacturer', disconnectorLineExit.manufactured?.id, 'view']">{{disconnectorLineExit.manufactured?.manufactName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Substation</span></dt>
+                <dd>
+                    <div *ngIf="disconnectorLineExit.substation">
+                        <a [routerLink]="['/substation', disconnectorLineExit.substation?.id, 'view']">{{disconnectorLineExit.substation?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Field</span></dt>
+                <dd>
+                    <div *ngIf="disconnectorLineExit.field">
+                        <a [routerLink]="['/field', disconnectorLineExit.field?.id, 'view']">{{disconnectorLineExit.field?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/disconnector-line-exit', disconnectorLineExit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

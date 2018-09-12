@@ -1,0 +1,22 @@
+{
+    "name": "JobStatus",
+    "fields": [
+        {
+            "fieldName": "jobStatus",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180830125050",
+    "entityTableName": "job_status",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

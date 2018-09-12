@@ -1,0 +1,124 @@
+<div>
+    <h2 id="page-heading">
+        <span>Transformers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-transformer" [routerLink]="['/transformer/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Transformer
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="transformers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Production Year</span></th>
+            <th><span>Installation Year</span></th>
+            <th><span>Short Circuit Voltage</span></th>
+            <th><span>Is Earth Grounding</span></th>
+            <th><span>Picture</span></th>
+            <th><span>Serial Number</span></th>
+            <th><span>Condition</span></th>
+            <th><span>Status</span></th>
+            <th><span>Coupling</span></th>
+            <th><span>Power</span></th>
+            <th><span>Trans Ratio</span></th>
+            <th><span>Manufacturer</span></th>
+            <th><span>Type</span></th>
+            <th><span>Service</span></th>
+            <th><span>Redni Broj</span></th>
+            <th><span>Substation</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let transformer of transformers ;trackBy: trackId">
+                <td><a [routerLink]="['/transformer', transformer.id, 'view' ]">{{transformer.id}}</a></td>
+                <td>{{transformer.productionYear}}</td>
+                <td>{{transformer.installationYear}}</td>
+                <td>{{transformer.shortCircuitVoltage}}</td>
+                <td>{{transformer.isEarthGrounding}}</td>
+                <td>{{transformer.picture}}</td>
+                <td>{{transformer.serialNumber}}</td>
+                <td>
+                    <div *ngIf="transformer.condition">
+                        <a [routerLink]="['../element-condition', transformer.condition?.id, 'view' ]" >{{transformer.condition?.elementCondition}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.status">
+                        <a [routerLink]="['../element-status', transformer.status?.id, 'view' ]" >{{transformer.status?.elementStatus}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.coupling">
+                        <a [routerLink]="['../coupling', transformer.coupling?.id, 'view' ]" >{{transformer.coupling?.coupling}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.power">
+                        <a [routerLink]="['../power', transformer.power?.id, 'view' ]" >{{transformer.power?.power}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.transRatio">
+                        <a [routerLink]="['../transmission-ratio', transformer.transRatio?.id, 'view' ]" >{{transformer.transRatio?.transmissionRatio}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.manufacturer">
+                        <a [routerLink]="['../manufacturer', transformer.manufacturer?.id, 'view' ]" >{{transformer.manufacturer?.manufactName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.type">
+                        <a [routerLink]="['../transformer-type', transformer.type?.id, 'view' ]" >{{transformer.type?.type}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.service">
+                        <a [routerLink]="['../service', transformer.service?.id, 'view' ]" >{{transformer.service?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.redniBroj">
+                        <a [routerLink]="['../transformator-number', transformer.redniBroj?.id, 'view' ]" >{{transformer.redniBroj?.tNumber}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="transformer.substation">
+                        <a [routerLink]="['../substation', transformer.substation?.id, 'view' ]" >{{transformer.substation?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/transformer', transformer.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/transformer', transformer.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'transformer/'+ transformer.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

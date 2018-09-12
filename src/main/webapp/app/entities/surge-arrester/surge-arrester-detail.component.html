@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="surgeArrester">
+            <h2><span>Surge Arrester</span> {{surgeArrester.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Production Year</span></dt>
+                <dd>
+                    <span>{{surgeArrester.productionYear}}</span>
+                </dd>
+                <dt><span>Ucur</span></dt>
+                <dd>
+                    <span>{{surgeArrester.ucur}}</span>
+                </dd>
+                <dt><span>Drainage Current</span></dt>
+                <dd>
+                    <span>{{surgeArrester.drainageCurrent}}</span>
+                </dd>
+                <dt><span>Serial</span></dt>
+                <dd>
+                    <span>{{surgeArrester.serial}}</span>
+                </dd>
+                <dt><span>Picture</span></dt>
+                <dd>
+                    <span>{{surgeArrester.picture}}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <div *ngIf="surgeArrester.type">
+                        <a [routerLink]="['/surge-arrester-type', surgeArrester.type?.id, 'view']">{{surgeArrester.type?.saType}}</a>
+                    </div>
+                </dd>
+                <dt><span>Manufactured</span></dt>
+                <dd>
+                    <div *ngIf="surgeArrester.manufactured">
+                        <a [routerLink]="['/manufacturer', surgeArrester.manufactured?.id, 'view']">{{surgeArrester.manufactured?.manufactName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Substation</span></dt>
+                <dd>
+                    <div *ngIf="surgeArrester.substation">
+                        <a [routerLink]="['/substation', surgeArrester.substation?.id, 'view']">{{surgeArrester.substation?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Field</span></dt>
+                <dd>
+                    <div *ngIf="surgeArrester.field">
+                        <a [routerLink]="['/field', surgeArrester.field?.id, 'view']">{{surgeArrester.field?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/surge-arrester', surgeArrester.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+<div>
+    <h2 id="page-heading">
+        <span>Board Of Directors</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-board-of-directors" [routerLink]="['/board-of-directors/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Board Of Directors
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="boardOfDirectors">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Start Date</span></th>
+            <th><span>End Date</span></th>
+            <th><span>Executive</span></th>
+            <th><span>Exec Assistent</span></th>
+            <th><span>Member 1</span></th>
+            <th><span>Member 2</span></th>
+            <th><span>Member 3</span></th>
+            <th><span>Member 4</span></th>
+            <th><span>Member 5</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let boardOfDirectors of boardOfDirectors ;trackBy: trackId">
+                <td><a [routerLink]="['/board-of-directors', boardOfDirectors.id, 'view' ]">{{boardOfDirectors.id}}</a></td>
+                <td>{{boardOfDirectors.startDate | date:'mediumDate'}}</td>
+                <td>{{boardOfDirectors.endDate | date:'mediumDate'}}</td>
+                <td>
+                    <span *ngFor="let executive of boardOfDirectors.executives; let last = last">
+                            <a class="form-control-static" [routerLink]="['../board-member', executive?.id, 'view' ]">{{executive.email}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let execAssistent of boardOfDirectors.execAssistents; let last = last">
+                            <a class="form-control-static" [routerLink]="['../board-member', execAssistent?.id, 'view' ]">{{execAssistent.email}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let member1 of boardOfDirectors.member1S; let last = last">
+                            <a class="form-control-static" [routerLink]="['../board-member', member1?.id, 'view' ]">{{member1.email}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let member2 of boardOfDirectors.member2S; let last = last">
+                            <a class="form-control-static" [routerLink]="['../board-member', member2?.id, 'view' ]">{{member2.email}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let member3 of boardOfDirectors.member3S; let last = last">
+                            <a class="form-control-static" [routerLink]="['../board-member', member3?.id, 'view' ]">{{member3.email}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let member4 of boardOfDirectors.member4S; let last = last">
+                            <a class="form-control-static" [routerLink]="['../board-member', member4?.id, 'view' ]">{{member4.email}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let member5 of boardOfDirectors.member5S; let last = last">
+                            <a class="form-control-static" [routerLink]="['../board-member', member5?.id, 'view' ]">{{member5.email}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/board-of-directors', boardOfDirectors.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/board-of-directors', boardOfDirectors.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'board-of-directors/'+ boardOfDirectors.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,132 @@
+<div>
+    <h2 id="page-heading">
+        <span>Ohls</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ohl" [routerLink]="['/ohl/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Ohl
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="ohls">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Ohl Number</span></th>
+            <th><span>Operation Year</span></th>
+            <th><span>Length Total</span></th>
+            <th><span>Length In Mne</span></th>
+            <th><span>R Ohm Per Phase In Mne</span></th>
+            <th><span>R Ohm Per Phase Total</span></th>
+            <th><span>X Ohm Per Phase In Mne</span></th>
+            <th><span>X Ohm Per Phase Total</span></th>
+            <th><span>B Ohm Per Phase In Mne</span></th>
+            <th><span>B Ohm Per Phase Total</span></th>
+            <th><span>R 0 Ohm Per Phase In Mne</span></th>
+            <th><span>R 0 Ohm Per Phase Total</span></th>
+            <th><span>X 0 Ohm Per Phase In Mne</span></th>
+            <th><span>X 0 Ohm Per Phase Total</span></th>
+            <th><span>Pylon Number</span></th>
+            <th><span>Isolator Number</span></th>
+            <th><span>Substation 1</span></th>
+            <th><span>Substation 2</span></th>
+            <th><span>T Connection</span></th>
+            <th><span>Voltage Level</span></th>
+            <th><span>Ohl Construction Part</span></th>
+            <th><span>Thermal Limit</span></th>
+            <th><span>Cond Cross Sect</span></th>
+            <th><span>Earth Cross Sect</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ohl of ohls ;trackBy: trackId">
+                <td><a [routerLink]="['/ohl', ohl.id, 'view' ]">{{ohl.id}}</a></td>
+                <td>{{ohl.ohlNumber}}</td>
+                <td>{{ohl.operationYear}}</td>
+                <td>{{ohl.lengthTotal}}</td>
+                <td>{{ohl.lengthInMne}}</td>
+                <td>{{ohl.rOhmPerPhaseInMne}}</td>
+                <td>{{ohl.rOhmPerPhaseTotal}}</td>
+                <td>{{ohl.xOhmPerPhaseInMne}}</td>
+                <td>{{ohl.xOhmPerPhaseTotal}}</td>
+                <td>{{ohl.bOhmPerPhaseInMne}}</td>
+                <td>{{ohl.bOhmPerPhaseTotal}}</td>
+                <td>{{ohl.r0OhmPerPhaseInMne}}</td>
+                <td>{{ohl.r0OhmPerPhaseTotal}}</td>
+                <td>{{ohl.x0OhmPerPhaseInMne}}</td>
+                <td>{{ohl.x0OhmPerPhaseTotal}}</td>
+                <td>{{ohl.pylonNumber}}</td>
+                <td>{{ohl.isolatorNumber}}</td>
+                <td>
+                    <div *ngIf="ohl.substation1">
+                        <a [routerLink]="['../substation', ohl.substation1?.id, 'view' ]" >{{ohl.substation1?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ohl.substation2">
+                        <a [routerLink]="['../substation', ohl.substation2?.id, 'view' ]" >{{ohl.substation2?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ohl.tConnection">
+                        <a [routerLink]="['../tconnection', ohl.tConnection?.id, 'view' ]" >{{ohl.tConnection?.tConnSubStationName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ohl.voltageLevel">
+                        <a [routerLink]="['../voltage-level', ohl.voltageLevel?.id, 'view' ]" >{{ohl.voltageLevel?.voltageLevel}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ohl.ohlConstructionPart">
+                        <a [routerLink]="['../pylon-type', ohl.ohlConstructionPart?.id, 'view' ]" >{{ohl.ohlConstructionPart?.pylonType}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ohl.thermalLimit">
+                        <a [routerLink]="['../thermal-limit', ohl.thermalLimit?.id, 'view' ]" >{{ohl.thermalLimit?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ohl.condCrossSect">
+                        <a [routerLink]="['../conductor-cross-sect', ohl.condCrossSect?.id, 'view' ]" >{{ohl.condCrossSect?.conductorCrossSection}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="ohl.earthCrossSect">
+                        <a [routerLink]="['../earth-wire-cross-sect', ohl.earthCrossSect?.id, 'view' ]" >{{ohl.earthCrossSect?.earthWireCrossSection}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/ohl', ohl.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/ohl', ohl.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ohl/'+ ohl.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

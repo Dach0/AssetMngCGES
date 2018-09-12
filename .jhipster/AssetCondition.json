@@ -1,0 +1,19 @@
+{
+    "name": "AssetCondition",
+    "fields": [
+        {
+            "fieldName": "conditionDesc",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180830125101",
+    "entityTableName": "asset_condition",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-tconnection-heading">Create or edit a Tconnection</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!tconnection.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="tconnection.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_tConnSubStationName">T Conn Sub Station Name</label>
+                    <input type="text" class="form-control" name="tConnSubStationName" id="field_tConnSubStationName"
+                        [(ngModel)]="tconnection.tConnSubStationName" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation1">Substation 1</label>
+                    <select class="form-control" id="field_substation1" name="substation1" [(ngModel)]="tconnection.substation1" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === tconnection.substation1?.id ? tconnection.substation1 : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation2">Substation 2</label>
+                    <select class="form-control" id="field_substation2" name="substation2" [(ngModel)]="tconnection.substation2" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === tconnection.substation2?.id ? tconnection.substation2 : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CircuitBreaker.
+    -->
+    <changeSet id="20180830125033-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="drive_id"
+                                 baseTableName="circuit_breaker"
+                                 constraintName="fk_circuit_breaker_drive_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="circuit_breaker_drive"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="circuit_breaker"
+                                 constraintName="fk_circuit_breaker_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="circuit_breaker_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="manufactured_id"
+                                 baseTableName="circuit_breaker"
+                                 constraintName="fk_circuit_breaker_manufactured_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manufacturer"/>
+
+        <addForeignKeyConstraint baseColumnNames="substation_id"
+                                 baseTableName="circuit_breaker"
+                                 constraintName="fk_circuit_breaker_substation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="substation"/>
+
+        <addForeignKeyConstraint baseColumnNames="field_id"
+                                 baseTableName="circuit_breaker"
+                                 constraintName="fk_circuit_breaker_field_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="field"/>
+
+    </changeSet>
+</databaseChangeLog>

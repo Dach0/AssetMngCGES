@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-voltage-level-heading">Create or edit a Voltage Level</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!voltageLevel.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="voltageLevel.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_voltageLevel">Voltage Level</label>
+                    <input type="number" class="form-control" name="voltageLevel" id="field_voltageLevel"
+                        [(ngModel)]="voltageLevel.voltageLevel" required/>
+                    <div [hidden]="!(editForm.controls.voltageLevel?.dirty && editForm.controls.voltageLevel?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.voltageLevel?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.voltageLevel?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_correctionFactor">Correction Factor</label>
+                    <select class="form-control" id="field_correctionFactor" name="correctionFactor" [(ngModel)]="voltageLevel.correctionFactor" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="correctionFactorOption.id === voltageLevel.correctionFactor?.id ? voltageLevel.correctionFactor : correctionFactorOption" *ngFor="let correctionFactorOption of correctionfactors; trackBy: trackCorrectionFactorById">{{correctionFactorOption.templateName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

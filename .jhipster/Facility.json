@@ -1,0 +1,54 @@
+{
+    "name": "Facility",
+    "fields": [
+        {
+            "fieldName": "inOperationSince",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "power",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "numOfTransformers",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "busbars",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numOfFields",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "voltageLevel",
+            "otherEntityName": "voltageLevel",
+            "otherEntityField": "voltageLevel"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "maintaining",
+            "otherEntityName": "facilityMaintainingCo",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "substation",
+            "otherEntityName": "substation",
+            "otherEntityRelationshipName": "facility"
+        }
+    ],
+    "changelogDate": "20180830125017",
+    "entityTableName": "facility",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

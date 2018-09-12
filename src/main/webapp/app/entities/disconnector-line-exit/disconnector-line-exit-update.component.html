@@ -1,0 +1,105 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-disconnector-line-exit-heading">Create or edit a Disconnector Line Exit</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!disconnectorLineExit.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="disconnectorLineExit.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productionYear">Production Year</label>
+                    <input type="number" class="form-control" name="productionYear" id="field_productionYear"
+                        [(ngModel)]="disconnectorLineExit.productionYear" required/>
+                    <div [hidden]="!(editForm.controls.productionYear?.dirty && editForm.controls.productionYear?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.productionYear?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.productionYear?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_current">Current</label>
+                    <input type="number" class="form-control" name="current" id="field_current"
+                        [(ngModel)]="disconnectorLineExit.current" required/>
+                    <div [hidden]="!(editForm.controls.current?.dirty && editForm.controls.current?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.current?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.current?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serial">Serial</label>
+                    <input type="text" class="form-control" name="serial" id="field_serial"
+                        [(ngModel)]="disconnectorLineExit.serial" required/>
+                    <div [hidden]="!(editForm.controls.serial?.dirty && editForm.controls.serial?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.serial?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_picture">Picture</label>
+                    <input type="text" class="form-control" name="picture" id="field_picture"
+                        [(ngModel)]="disconnectorLineExit.picture" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_drive">Drive</label>
+                    <select class="form-control" id="field_drive" name="drive" [(ngModel)]="disconnectorLineExit.drive" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="disconnectorDriveOption.id === disconnectorLineExit.drive?.id ? disconnectorLineExit.drive : disconnectorDriveOption" *ngFor="let disconnectorDriveOption of disconnectordrives; trackBy: trackDisconnectorDriveById">{{disconnectorDriveOption.discDrive}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="disconnectorLineExit.type" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="disconnectorTypeOption.id === disconnectorLineExit.type?.id ? disconnectorLineExit.type : disconnectorTypeOption" *ngFor="let disconnectorTypeOption of disconnectortypes; trackBy: trackDisconnectorTypeById">{{disconnectorTypeOption.discType}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_manufactured">Manufactured</label>
+                    <select class="form-control" id="field_manufactured" name="manufactured" [(ngModel)]="disconnectorLineExit.manufactured" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="manufacturerOption.id === disconnectorLineExit.manufactured?.id ? disconnectorLineExit.manufactured : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.manufactName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_substation">Substation</label>
+                    <select class="form-control" id="field_substation" name="substation" [(ngModel)]="disconnectorLineExit.substation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="substationOption.id === disconnectorLineExit.substation?.id ? disconnectorLineExit.substation : substationOption" *ngFor="let substationOption of substations; trackBy: trackSubstationById">{{substationOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_field">Field</label>
+                    <select class="form-control" id="field_field" name="field" [(ngModel)]="disconnectorLineExit.field" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="fieldOption.id === disconnectorLineExit.field?.id ? disconnectorLineExit.field : fieldOption" *ngFor="let fieldOption of fields; trackBy: trackFieldById">{{fieldOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

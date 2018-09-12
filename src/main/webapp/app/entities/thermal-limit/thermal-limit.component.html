@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span>Thermal Limits</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-thermal-limit" [routerLink]="['/thermal-limit/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Thermal Limit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="thermalLimits">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Template Name</span></th>
+            <th><span>I Max Summer</span></th>
+            <th><span>I Max Winter</span></th>
+            <th><span>P Max Summer</span></th>
+            <th><span>P Max Winter</span></th>
+            <th><span>Thermal Limit</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let thermalLimit of thermalLimits ;trackBy: trackId">
+                <td><a [routerLink]="['/thermal-limit', thermalLimit.id, 'view' ]">{{thermalLimit.id}}</a></td>
+                <td>{{thermalLimit.templateName}}</td>
+                <td>{{thermalLimit.iMaxSummer}}</td>
+                <td>{{thermalLimit.iMaxWinter}}</td>
+                <td>{{thermalLimit.pMaxSummer}}</td>
+                <td>{{thermalLimit.pMaxWinter}}</td>
+                <td>{{thermalLimit.thermalLimit}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/thermal-limit', thermalLimit.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/thermal-limit', thermalLimit.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'thermal-limit/'+ thermalLimit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<div>
+    <h2 id="page-heading">
+        <span>Employees</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-employee" [routerLink]="['/employee/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Employee
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="employees">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastname"><span>Lastname</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telNum1"><span>Tel Num 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="telNum2"><span>Tel Num 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span>Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="startDate"><span>Start Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="endDate"><span>End Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pictureEmpl"><span>Picture Empl</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="notes"><span>Notes</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachments"><span>Attachments</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phPrivilage.privilage"><span>Ph Privilage</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="group.groupName"><span>Group</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sector.sectorName"><span>Sector</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="departman.depName"><span>Departman</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="jobDesc.jobDescription"><span>Job Desc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status.jobStatus"><span>Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="profQualification.proffQualification"><span>Prof Qualification</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="contractType.contractType"><span>Contract Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let employee of employees ;trackBy: trackId">
+                <td><a [routerLink]="['/employee', employee.id, 'view' ]">{{employee.id}}</a></td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.lastname}}</td>
+                <td>{{employee.telNum1}}</td>
+                <td>{{employee.telNum2}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.startDate | date:'mediumDate'}}</td>
+                <td>{{employee.endDate | date:'mediumDate'}}</td>
+                <td>{{employee.pictureEmpl}}</td>
+                <td>{{employee.notes}}</td>
+                <td>{{employee.attachments}}</td>
+                <td>
+                    <div *ngIf="employee.phPrivilage">
+                        <a [routerLink]="['../phone-privilage', employee.phPrivilage?.id, 'view' ]" >{{employee.phPrivilage?.privilage}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employee.group">
+                        <a [routerLink]="['../employee-group', employee.group?.id, 'view' ]" >{{employee.group?.groupName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employee.sector">
+                        <a [routerLink]="['../sector', employee.sector?.id, 'view' ]" >{{employee.sector?.sectorName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employee.departman">
+                        <a [routerLink]="['../departman', employee.departman?.id, 'view' ]" >{{employee.departman?.depName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employee.jobDesc">
+                        <a [routerLink]="['../job', employee.jobDesc?.id, 'view' ]" >{{employee.jobDesc?.jobDescription}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employee.status">
+                        <a [routerLink]="['../job-status', employee.status?.id, 'view' ]" >{{employee.status?.jobStatus}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employee.profQualification">
+                        <a [routerLink]="['../qualification', employee.profQualification?.id, 'view' ]" >{{employee.profQualification?.proffQualification}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="employee.contractType">
+                        <a [routerLink]="['../contract', employee.contractType?.id, 'view' ]" >{{employee.contractType?.contractType}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/employee', employee.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/employee', employee.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

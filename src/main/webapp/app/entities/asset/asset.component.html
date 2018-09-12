@@ -1,0 +1,112 @@
+<div>
+    <h2 id="page-heading">
+        <span>Assets</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-asset" [routerLink]="['/asset/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Asset
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="assets">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Description</span></th>
+            <th><span>Manufacturer</span></th>
+            <th><span>Brand</span></th>
+            <th><span>Model</span></th>
+            <th><span>Picture</span></th>
+            <th><span>Serial Number</span></th>
+            <th><span>Date Of Obligation</span></th>
+            <th><span>Purchase Price</span></th>
+            <th><span>Market Price</span></th>
+            <th><span>Scrap Price</span></th>
+            <th><span>Purchased Date</span></th>
+            <th><span>In Service Date</span></th>
+            <th><span>Warrenty</span></th>
+            <th><span>Notes</span></th>
+            <th><span>Attachments</span></th>
+            <th><span>Type</span></th>
+            <th><span>Location</span></th>
+            <th><span>Status</span></th>
+            <th><span>Condition</span></th>
+            <th><span>Asset</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let asset of assets ;trackBy: trackId">
+                <td><a [routerLink]="['/asset', asset.id, 'view' ]">{{asset.id}}</a></td>
+                <td>{{asset.description}}</td>
+                <td>{{asset.manufacturer}}</td>
+                <td>{{asset.brand}}</td>
+                <td>{{asset.model}}</td>
+                <td>{{asset.picture}}</td>
+                <td>{{asset.serialNumber}}</td>
+                <td>{{asset.dateOfObligation | date:'mediumDate'}}</td>
+                <td>{{asset.purchasePrice}}</td>
+                <td>{{asset.marketPrice}}</td>
+                <td>{{asset.scrapPrice}}</td>
+                <td>{{asset.purchasedDate | date:'mediumDate'}}</td>
+                <td>{{asset.inServiceDate | date:'mediumDate'}}</td>
+                <td>{{asset.warrenty | date:'mediumDate'}}</td>
+                <td>{{asset.notes}}</td>
+                <td>{{asset.attachments}}</td>
+                <td>
+                    <div *ngIf="asset.type">
+                        <a [routerLink]="['../type', asset.type?.id, 'view' ]" >{{asset.type?.typeName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="asset.location">
+                        <a [routerLink]="['../location', asset.location?.id, 'view' ]" >{{asset.location?.locationName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="asset.status">
+                        <a [routerLink]="['../asset-status', asset.status?.id, 'view' ]" >{{asset.status?.status}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="asset.condition">
+                        <a [routerLink]="['../asset-condition', asset.condition?.id, 'view' ]" >{{asset.condition?.conditionDesc}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="asset.asset">
+                        <a [routerLink]="['../employee', asset.asset?.id, 'view' ]" >{{asset.asset?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/asset', asset.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/asset', asset.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'asset/'+ asset.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

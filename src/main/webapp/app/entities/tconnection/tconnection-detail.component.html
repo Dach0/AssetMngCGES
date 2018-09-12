@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tconnection">
+            <h2><span>Tconnection</span> {{tconnection.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>T Conn Sub Station Name</span></dt>
+                <dd>
+                    <span>{{tconnection.tConnSubStationName}}</span>
+                </dd>
+                <dt><span>Substation 1</span></dt>
+                <dd>
+                    <div *ngIf="tconnection.substation1">
+                        <a [routerLink]="['/substation', tconnection.substation1?.id, 'view']">{{tconnection.substation1?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Substation 2</span></dt>
+                <dd>
+                    <div *ngIf="tconnection.substation2">
+                        <a [routerLink]="['/substation', tconnection.substation2?.id, 'view']">{{tconnection.substation2?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tconnection', tconnection.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

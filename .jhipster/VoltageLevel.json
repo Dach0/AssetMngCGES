@@ -1,0 +1,29 @@
+{
+    "name": "VoltageLevel",
+    "fields": [
+        {
+            "fieldName": "voltageLevel",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "correctionFactor",
+            "otherEntityName": "correctionFactor",
+            "otherEntityField": "templateName"
+        }
+    ],
+    "changelogDate": "20180830125009",
+    "entityTableName": "voltage_level",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

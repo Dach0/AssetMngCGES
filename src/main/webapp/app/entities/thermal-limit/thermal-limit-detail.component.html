@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="thermalLimit">
+            <h2><span>Thermal Limit</span> {{thermalLimit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Template Name</span></dt>
+                <dd>
+                    <span>{{thermalLimit.templateName}}</span>
+                </dd>
+                <dt><span>I Max Summer</span></dt>
+                <dd>
+                    <span>{{thermalLimit.iMaxSummer}}</span>
+                </dd>
+                <dt><span>I Max Winter</span></dt>
+                <dd>
+                    <span>{{thermalLimit.iMaxWinter}}</span>
+                </dd>
+                <dt><span>P Max Summer</span></dt>
+                <dd>
+                    <span>{{thermalLimit.pMaxSummer}}</span>
+                </dd>
+                <dt><span>P Max Winter</span></dt>
+                <dd>
+                    <span>{{thermalLimit.pMaxWinter}}</span>
+                </dd>
+                <dt><span>Thermal Limit</span></dt>
+                <dd>
+                    <span>{{thermalLimit.thermalLimit}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/thermal-limit', thermalLimit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

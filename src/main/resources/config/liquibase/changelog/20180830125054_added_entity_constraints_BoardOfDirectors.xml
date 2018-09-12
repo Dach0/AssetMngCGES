@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity BoardOfDirectors.
+    -->
+    <changeSet id="20180830125054-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="board_of_directors_id"
+                                 baseTableName="board_of_directors_executive"
+                                 constraintName="fk_board_of_directors_executive_board_of_directors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_of_directors"/>
+        <addForeignKeyConstraint baseColumnNames="executives_id"
+                                 baseTableName="board_of_directors_executive"
+                                 constraintName="fk_board_of_directors_executive_executives_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_member"/>
+        
+        <addForeignKeyConstraint baseColumnNames="board_of_directors_id"
+                                 baseTableName="board_of_directors_exec_assistent"
+                                 constraintName="fk_board_of_directors_exec_assistent_board_of_directors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_of_directors"/>
+        <addForeignKeyConstraint baseColumnNames="exec_assistents_id"
+                                 baseTableName="board_of_directors_exec_assistent"
+                                 constraintName="fk_board_of_directors_exec_assistent_exec_assistents_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_member"/>
+        
+        <addForeignKeyConstraint baseColumnNames="board_of_directors_id"
+                                 baseTableName="board_of_directors_member1"
+                                 constraintName="fk_board_of_directors_member1_board_of_directors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_of_directors"/>
+        <addForeignKeyConstraint baseColumnNames="member1s_id"
+                                 baseTableName="board_of_directors_member1"
+                                 constraintName="fk_board_of_directors_member1_member1s_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_member"/>
+        
+        <addForeignKeyConstraint baseColumnNames="board_of_directors_id"
+                                 baseTableName="board_of_directors_member2"
+                                 constraintName="fk_board_of_directors_member2_board_of_directors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_of_directors"/>
+        <addForeignKeyConstraint baseColumnNames="member2s_id"
+                                 baseTableName="board_of_directors_member2"
+                                 constraintName="fk_board_of_directors_member2_member2s_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_member"/>
+        
+        <addForeignKeyConstraint baseColumnNames="board_of_directors_id"
+                                 baseTableName="board_of_directors_member3"
+                                 constraintName="fk_board_of_directors_member3_board_of_directors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_of_directors"/>
+        <addForeignKeyConstraint baseColumnNames="member3s_id"
+                                 baseTableName="board_of_directors_member3"
+                                 constraintName="fk_board_of_directors_member3_member3s_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_member"/>
+        
+        <addForeignKeyConstraint baseColumnNames="board_of_directors_id"
+                                 baseTableName="board_of_directors_member4"
+                                 constraintName="fk_board_of_directors_member4_board_of_directors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_of_directors"/>
+        <addForeignKeyConstraint baseColumnNames="member4s_id"
+                                 baseTableName="board_of_directors_member4"
+                                 constraintName="fk_board_of_directors_member4_member4s_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_member"/>
+        
+        <addForeignKeyConstraint baseColumnNames="board_of_directors_id"
+                                 baseTableName="board_of_directors_member5"
+                                 constraintName="fk_board_of_directors_member5_board_of_directors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_of_directors"/>
+        <addForeignKeyConstraint baseColumnNames="member5s_id"
+                                 baseTableName="board_of_directors_member5"
+                                 constraintName="fk_board_of_directors_member5_member5s_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_member"/>
+        
+    </changeSet>
+</databaseChangeLog>

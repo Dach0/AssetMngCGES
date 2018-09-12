@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="boardOfDirectors">
+            <h2><span>Board Of Directors</span> {{boardOfDirectors.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Start Date</span></dt>
+                <dd>
+                    <span>{{boardOfDirectors.startDate}}</span>
+                </dd>
+                <dt><span>End Date</span></dt>
+                <dd>
+                    <span>{{boardOfDirectors.endDate}}</span>
+                </dd>
+                <dt><span>Executive</span></dt>
+                <dd>
+                    <span *ngFor="let executive of boardOfDirectors.executives; let last = last">
+                        <a [routerLink]="['/board-member', executive?.id, 'view' ]">{{executive.email}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Exec Assistent</span></dt>
+                <dd>
+                    <span *ngFor="let execAssistent of boardOfDirectors.execAssistents; let last = last">
+                        <a [routerLink]="['/board-member', execAssistent?.id, 'view' ]">{{execAssistent.email}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Member 1</span></dt>
+                <dd>
+                    <span *ngFor="let member1 of boardOfDirectors.member1S; let last = last">
+                        <a [routerLink]="['/board-member', member1?.id, 'view' ]">{{member1.email}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Member 2</span></dt>
+                <dd>
+                    <span *ngFor="let member2 of boardOfDirectors.member2S; let last = last">
+                        <a [routerLink]="['/board-member', member2?.id, 'view' ]">{{member2.email}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Member 3</span></dt>
+                <dd>
+                    <span *ngFor="let member3 of boardOfDirectors.member3S; let last = last">
+                        <a [routerLink]="['/board-member', member3?.id, 'view' ]">{{member3.email}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Member 4</span></dt>
+                <dd>
+                    <span *ngFor="let member4 of boardOfDirectors.member4S; let last = last">
+                        <a [routerLink]="['/board-member', member4?.id, 'view' ]">{{member4.email}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Member 5</span></dt>
+                <dd>
+                    <span *ngFor="let member5 of boardOfDirectors.member5S; let last = last">
+                        <a [routerLink]="['/board-member', member5?.id, 'view' ]">{{member5.email}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/board-of-directors', boardOfDirectors.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

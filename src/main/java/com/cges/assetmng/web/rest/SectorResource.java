@@ -1,0 +1,120 @@
+package com.cges.assetmng.web.rest;
+
+import com.codahale.metrics.annotation.Timed;
+import com.cges.assetmng.domain.Sector;
+import com.cges.assetmng.repository.SectorRepository;
+import com.cges.assetmng.web.rest.errors.BadRequestAlertException;
+import com.cges.assetmng.web.rest.util.HeaderUtil;
+import io.github.jhipster.web.util.ResponseUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * REST controller for managing Sector.
+ */
+@RestController
+@RequestMapping("/api")
+public class SectorResource {
+
+    private final Logger log = LoggerFactory.getLogger(SectorResource.class);
+
+    private static final String ENTITY_NAME = "sector";
+
+    private final SectorRepository sectorRepository;
+
+    public SectorResource(SectorRepository sectorRepository) {
+        this.sectorRepository = sectorRepository;
+    }
+
+    /**
+     * POST  /sectors : Create a new sector.
+     *
+     * @param sector the sector to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new sector, or with status 400 (Bad Request) if the sector has already an ID
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/sectors")
+    @Timed
+    public ResponseEntity<Sector> createSector(@Valid @RequestBody Sector sector) throws URISyntaxException {
+        log.debug("REST request to save Sector : {}", sector);
+        if (sector.getId() != null) {
+            throw new BadRequestAlertException("A new sector cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        Sector result = sectorRepository.save(sector);
+        return ResponseEntity.created(new URI("/api/sectors/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * PUT  /sectors : Updates an existing sector.
+     *
+     * @param sector the sector to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated sector,
+     * or with status 400 (Bad Request) if the sector is not valid,
+     * or with status 500 (Internal Server Error) if the sector couldn't be updated
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PutMapping("/sectors")
+    @Timed
+    public ResponseEntity<Sector> updateSector(@Valid @RequestBody Sector sector) throws URISyntaxException {
+        log.debug("REST request to update Sector : {}", sector);
+        if (sector.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        Sector result = sectorRepository.save(sector);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, sector.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * GET  /sectors : get all the sectors.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of sectors in body
+     */
+    @GetMapping("/sectors")
+    @Timed
+    public List<Sector> getAllSectors() {
+        log.debug("REST request to get all Sectors");
+        return sectorRepository.findAll();
+    }
+
+    /**
+     * GET  /sectors/:id : get the "id" sector.
+     *
+     * @param id the id of the sector to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the sector, or with status 404 (Not Found)
+     */
+    @GetMapping("/sectors/{id}")
+    @Timed
+    public ResponseEntity<Sector> getSector(@PathVariable Long id) {
+        log.debug("REST request to get Sector : {}", id);
+        Optional<Sector> sector = sectorRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(sector);
+    }
+
+    /**
+     * DELETE  /sectors/:id : delete the "id" sector.
+     *
+     * @param id the id of the sector to delete
+     * @return the ResponseEntity with status 200 (OK)
+     */
+    @DeleteMapping("/sectors/{id}")
+    @Timed
+    public ResponseEntity<Void> deleteSector(@PathVariable Long id) {
+        log.debug("REST request to delete Sector : {}", id);
+
+        sectorRepository.deleteById(id);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+}

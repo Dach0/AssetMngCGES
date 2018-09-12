@@ -1,0 +1,33 @@
+{
+    "name": "Tconnection",
+    "fields": [
+        {
+            "fieldName": "tConnSubStationName",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "substation1",
+            "otherEntityName": "substation",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "substation2",
+            "otherEntityName": "substation",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180830125012",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "tconnection",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

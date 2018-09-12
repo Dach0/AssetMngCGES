@@ -1,0 +1,80 @@
+{
+    "name": "BoardOfDirectors",
+    "fields": [
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "executive",
+            "otherEntityName": "boardMember",
+            "otherEntityField": "email",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "execAssistent",
+            "otherEntityName": "boardMember",
+            "otherEntityField": "email",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "member1",
+            "otherEntityName": "boardMember",
+            "otherEntityField": "email",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "member2",
+            "otherEntityName": "boardMember",
+            "otherEntityField": "email",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "member3",
+            "otherEntityName": "boardMember",
+            "otherEntityField": "email",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "member4",
+            "otherEntityName": "boardMember",
+            "otherEntityField": "email",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "member5",
+            "otherEntityName": "boardMember",
+            "otherEntityField": "email",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20180830125054",
+    "entityTableName": "board_of_directors",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="groundingSticks">
+            <h2><span>Grounding Sticks</span> {{groundingSticks.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Production Year</span></dt>
+                <dd>
+                    <span>{{groundingSticks.productionYear}}</span>
+                </dd>
+                <dt><span>Current</span></dt>
+                <dd>
+                    <span>{{groundingSticks.current}}</span>
+                </dd>
+                <dt><span>Serial</span></dt>
+                <dd>
+                    <span>{{groundingSticks.serial}}</span>
+                </dd>
+                <dt><span>Picture</span></dt>
+                <dd>
+                    <span>{{groundingSticks.picture}}</span>
+                </dd>
+                <dt><span>Drive</span></dt>
+                <dd>
+                    <div *ngIf="groundingSticks.drive">
+                        <a [routerLink]="['/ground-sticks-drive', groundingSticks.drive?.id, 'view']">{{groundingSticks.drive?.gsDrive}}</a>
+                    </div>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <div *ngIf="groundingSticks.type">
+                        <a [routerLink]="['/ground-sticks-type', groundingSticks.type?.id, 'view']">{{groundingSticks.type?.gsType}}</a>
+                    </div>
+                </dd>
+                <dt><span>Manufactured</span></dt>
+                <dd>
+                    <div *ngIf="groundingSticks.manufactured">
+                        <a [routerLink]="['/manufacturer', groundingSticks.manufactured?.id, 'view']">{{groundingSticks.manufactured?.manufactName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Substation</span></dt>
+                <dd>
+                    <div *ngIf="groundingSticks.substation">
+                        <a [routerLink]="['/substation', groundingSticks.substation?.id, 'view']">{{groundingSticks.substation?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Field</span></dt>
+                <dd>
+                    <div *ngIf="groundingSticks.field">
+                        <a [routerLink]="['/field', groundingSticks.field?.id, 'view']">{{groundingSticks.field?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/grounding-sticks', groundingSticks.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

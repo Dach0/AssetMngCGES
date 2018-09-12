@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125008_added_entity_Ohl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125009_added_entity_VoltageLevel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125010_added_entity_ConductorCrossSect.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125011_added_entity_EarthWireCrossSect.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125012_added_entity_Tconnection.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125013_added_entity_PylonType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125014_added_entity_CorrectionFactor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125015_added_entity_ThermalLimit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125016_added_entity_Substation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125017_added_entity_Facility.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125018_added_entity_FacilityMaintainingCo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125019_added_entity_Transformer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125020_added_entity_TransformerType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125021_added_entity_TransformatorNumber.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125022_added_entity_Manufacturer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125023_added_entity_Power.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125024_added_entity_TransmissionRatio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125025_added_entity_Coupling.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125026_added_entity_ElementStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125027_added_entity_ElementCondition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125028_added_entity_Field.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125029_added_entity_DisconnectorBusBar.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125030_added_entity_DisconnectorLineExit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125031_added_entity_DisconnectorType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125032_added_entity_DisconnectorDrive.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125033_added_entity_CircuitBreaker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125034_added_entity_CircuitBreakerType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125035_added_entity_CircuitBreakerDrive.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125036_added_entity_CurrentMeasuringTransformer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125037_added_entity_CmtType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125038_added_entity_VoltageMeasuringTransformer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125039_added_entity_VmtType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125040_added_entity_GroundingSticks.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125041_added_entity_GroundSticksType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125042_added_entity_GroundSticksDrive.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125043_added_entity_SurgeArrester.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125044_added_entity_SurgeArresterType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125045_added_entity_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125046_added_entity_PhonePrivilage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125047_added_entity_EmployeeGroup.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125048_added_entity_Sector.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125049_added_entity_Job.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125050_added_entity_JobStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125051_added_entity_Qualification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125052_added_entity_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125053_added_entity_Departman.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125054_added_entity_BoardOfDirectors.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125055_added_entity_BoardMember.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125056_added_entity_TitleInBoard.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125057_added_entity_Asset.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125058_added_entity_Type.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125059_added_entity_Location.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125100_added_entity_AssetStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125101_added_entity_AssetCondition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125102_added_entity_Service.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125103_added_entity_ServiceType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125104_added_entity_ServiceCompany.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180830125008_added_entity_constraints_Ohl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125009_added_entity_constraints_VoltageLevel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125012_added_entity_constraints_Tconnection.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125016_added_entity_constraints_Substation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125017_added_entity_constraints_Facility.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125019_added_entity_constraints_Transformer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125029_added_entity_constraints_DisconnectorBusBar.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125030_added_entity_constraints_DisconnectorLineExit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125033_added_entity_constraints_CircuitBreaker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125036_added_entity_constraints_CurrentMeasuringTransformer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125038_added_entity_constraints_VoltageMeasuringTransformer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125040_added_entity_constraints_GroundingSticks.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125043_added_entity_constraints_SurgeArrester.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125045_added_entity_constraints_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125054_added_entity_constraints_BoardOfDirectors.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125055_added_entity_constraints_BoardMember.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125057_added_entity_constraints_Asset.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180830125102_added_entity_constraints_Service.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

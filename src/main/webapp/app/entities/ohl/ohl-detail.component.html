@@ -1,0 +1,135 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ohl">
+            <h2><span>Ohl</span> {{ohl.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ohl Number</span></dt>
+                <dd>
+                    <span>{{ohl.ohlNumber}}</span>
+                </dd>
+                <dt><span>Operation Year</span></dt>
+                <dd>
+                    <span>{{ohl.operationYear}}</span>
+                </dd>
+                <dt><span>Length Total</span></dt>
+                <dd>
+                    <span>{{ohl.lengthTotal}}</span>
+                </dd>
+                <dt><span>Length In Mne</span></dt>
+                <dd>
+                    <span>{{ohl.lengthInMne}}</span>
+                </dd>
+                <dt><span>R Ohm Per Phase In Mne</span></dt>
+                <dd>
+                    <span>{{ohl.rOhmPerPhaseInMne}}</span>
+                </dd>
+                <dt><span>R Ohm Per Phase Total</span></dt>
+                <dd>
+                    <span>{{ohl.rOhmPerPhaseTotal}}</span>
+                </dd>
+                <dt><span>X Ohm Per Phase In Mne</span></dt>
+                <dd>
+                    <span>{{ohl.xOhmPerPhaseInMne}}</span>
+                </dd>
+                <dt><span>X Ohm Per Phase Total</span></dt>
+                <dd>
+                    <span>{{ohl.xOhmPerPhaseTotal}}</span>
+                </dd>
+                <dt><span>B Ohm Per Phase In Mne</span></dt>
+                <dd>
+                    <span>{{ohl.bOhmPerPhaseInMne}}</span>
+                </dd>
+                <dt><span>B Ohm Per Phase Total</span></dt>
+                <dd>
+                    <span>{{ohl.bOhmPerPhaseTotal}}</span>
+                </dd>
+                <dt><span>R 0 Ohm Per Phase In Mne</span></dt>
+                <dd>
+                    <span>{{ohl.r0OhmPerPhaseInMne}}</span>
+                </dd>
+                <dt><span>R 0 Ohm Per Phase Total</span></dt>
+                <dd>
+                    <span>{{ohl.r0OhmPerPhaseTotal}}</span>
+                </dd>
+                <dt><span>X 0 Ohm Per Phase In Mne</span></dt>
+                <dd>
+                    <span>{{ohl.x0OhmPerPhaseInMne}}</span>
+                </dd>
+                <dt><span>X 0 Ohm Per Phase Total</span></dt>
+                <dd>
+                    <span>{{ohl.x0OhmPerPhaseTotal}}</span>
+                </dd>
+                <dt><span>Pylon Number</span></dt>
+                <dd>
+                    <span>{{ohl.pylonNumber}}</span>
+                </dd>
+                <dt><span>Isolator Number</span></dt>
+                <dd>
+                    <span>{{ohl.isolatorNumber}}</span>
+                </dd>
+                <dt><span>Substation 1</span></dt>
+                <dd>
+                    <div *ngIf="ohl.substation1">
+                        <a [routerLink]="['/substation', ohl.substation1?.id, 'view']">{{ohl.substation1?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Substation 2</span></dt>
+                <dd>
+                    <div *ngIf="ohl.substation2">
+                        <a [routerLink]="['/substation', ohl.substation2?.id, 'view']">{{ohl.substation2?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>T Connection</span></dt>
+                <dd>
+                    <div *ngIf="ohl.tConnection">
+                        <a [routerLink]="['/tconnection', ohl.tConnection?.id, 'view']">{{ohl.tConnection?.tConnSubStationName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Voltage Level</span></dt>
+                <dd>
+                    <div *ngIf="ohl.voltageLevel">
+                        <a [routerLink]="['/voltage-level', ohl.voltageLevel?.id, 'view']">{{ohl.voltageLevel?.voltageLevel}}</a>
+                    </div>
+                </dd>
+                <dt><span>Ohl Construction Part</span></dt>
+                <dd>
+                    <div *ngIf="ohl.ohlConstructionPart">
+                        <a [routerLink]="['/pylon-type', ohl.ohlConstructionPart?.id, 'view']">{{ohl.ohlConstructionPart?.pylonType}}</a>
+                    </div>
+                </dd>
+                <dt><span>Thermal Limit</span></dt>
+                <dd>
+                    <div *ngIf="ohl.thermalLimit">
+                        <a [routerLink]="['/thermal-limit', ohl.thermalLimit?.id, 'view']">{{ohl.thermalLimit?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Cond Cross Sect</span></dt>
+                <dd>
+                    <div *ngIf="ohl.condCrossSect">
+                        <a [routerLink]="['/conductor-cross-sect', ohl.condCrossSect?.id, 'view']">{{ohl.condCrossSect?.conductorCrossSection}}</a>
+                    </div>
+                </dd>
+                <dt><span>Earth Cross Sect</span></dt>
+                <dd>
+                    <div *ngIf="ohl.earthCrossSect">
+                        <a [routerLink]="['/earth-wire-cross-sect', ohl.earthCrossSect?.id, 'view']">{{ohl.earthCrossSect?.earthWireCrossSection}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ohl', ohl.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

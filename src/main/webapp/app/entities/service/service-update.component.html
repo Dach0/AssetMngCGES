@@ -1,0 +1,90 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-service-heading">Create or edit a Service</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!service.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="service.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_serviceDescription">Service Description</label>
+                    <input type="text" class="form-control" name="serviceDescription" id="field_serviceDescription"
+                        [(ngModel)]="service.serviceDescription" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_repairPrice">Repair Price</label>
+                    <input type="number" class="form-control" name="repairPrice" id="field_repairPrice"
+                        [(ngModel)]="service.repairPrice" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_sparePartsPrice">Spare Parts Price</label>
+                    <input type="number" class="form-control" name="sparePartsPrice" id="field_sparePartsPrice"
+                        [(ngModel)]="service.sparePartsPrice" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_servicedFrom">Serviced From</label>
+                    <div class="input-group">
+                        <input id="field_servicedFrom" type="text" class="form-control" name="servicedFrom" ngbDatepicker  #servicedFromDp="ngbDatepicker" [(ngModel)]="service.servicedFrom"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="servicedFromDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_servicedTo">Serviced To</label>
+                    <div class="input-group">
+                        <input id="field_servicedTo" type="text" class="form-control" name="servicedTo" ngbDatepicker  #servicedToDp="ngbDatepicker" [(ngModel)]="service.servicedTo"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="servicedToDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_attachments">Attachments</label>
+                    <input type="text" class="form-control" name="attachments" id="field_attachments"
+                        [(ngModel)]="service.attachments" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_notes">Notes</label>
+                    <textarea class="form-control" name="notes" id="field_notes"
+                        [(ngModel)]="service.notes" ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_doneByComp">Done By Comp</label>
+                    <select class="form-control" id="field_doneByComp" name="doneByComp" [(ngModel)]="service.doneByComp" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="serviceCompanyOption.id === service.doneByComp?.id ? service.doneByComp : serviceCompanyOption" *ngFor="let serviceCompanyOption of servicecompanies; trackBy: trackServiceCompanyById">{{serviceCompanyOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_doneByEmpl">Done By Empl</label>
+                    <select class="form-control" id="field_doneByEmpl" name="doneByEmpl" [(ngModel)]="service.doneByEmpl" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeOption.id === service.doneByEmpl?.id ? service.doneByEmpl : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.email}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_type">Type</label>
+                    <select class="form-control" id="field_type" name="type" [(ngModel)]="service.type" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="serviceTypeOption.id === service.type?.id ? service.type : serviceTypeOption" *ngFor="let serviceTypeOption of servicetypes; trackBy: trackServiceTypeById">{{serviceTypeOption.typeDescription}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

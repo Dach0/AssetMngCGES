@@ -1,0 +1,90 @@
+<div>
+    <h2 id="page-heading">
+        <span>Disconnector Line Exits</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-disconnector-line-exit" [routerLink]="['/disconnector-line-exit/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Disconnector Line Exit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="disconnectorLineExits">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Production Year</span></th>
+            <th><span>Current</span></th>
+            <th><span>Serial</span></th>
+            <th><span>Picture</span></th>
+            <th><span>Drive</span></th>
+            <th><span>Type</span></th>
+            <th><span>Manufactured</span></th>
+            <th><span>Substation</span></th>
+            <th><span>Field</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let disconnectorLineExit of disconnectorLineExits ;trackBy: trackId">
+                <td><a [routerLink]="['/disconnector-line-exit', disconnectorLineExit.id, 'view' ]">{{disconnectorLineExit.id}}</a></td>
+                <td>{{disconnectorLineExit.productionYear}}</td>
+                <td>{{disconnectorLineExit.current}}</td>
+                <td>{{disconnectorLineExit.serial}}</td>
+                <td>{{disconnectorLineExit.picture}}</td>
+                <td>
+                    <div *ngIf="disconnectorLineExit.drive">
+                        <a [routerLink]="['../disconnector-drive', disconnectorLineExit.drive?.id, 'view' ]" >{{disconnectorLineExit.drive?.discDrive}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorLineExit.type">
+                        <a [routerLink]="['../disconnector-type', disconnectorLineExit.type?.id, 'view' ]" >{{disconnectorLineExit.type?.discType}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorLineExit.manufactured">
+                        <a [routerLink]="['../manufacturer', disconnectorLineExit.manufactured?.id, 'view' ]" >{{disconnectorLineExit.manufactured?.manufactName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorLineExit.substation">
+                        <a [routerLink]="['../substation', disconnectorLineExit.substation?.id, 'view' ]" >{{disconnectorLineExit.substation?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="disconnectorLineExit.field">
+                        <a [routerLink]="['../field', disconnectorLineExit.field?.id, 'view' ]" >{{disconnectorLineExit.field?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/disconnector-line-exit', disconnectorLineExit.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/disconnector-line-exit', disconnectorLineExit.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'disconnector-line-exit/'+ disconnectorLineExit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

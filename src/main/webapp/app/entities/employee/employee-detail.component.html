@@ -1,0 +1,111 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employee">
+            <h2><span>Employee</span> {{employee.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{employee.name}}</span>
+                </dd>
+                <dt><span>Lastname</span></dt>
+                <dd>
+                    <span>{{employee.lastname}}</span>
+                </dd>
+                <dt><span>Tel Num 1</span></dt>
+                <dd>
+                    <span>{{employee.telNum1}}</span>
+                </dd>
+                <dt><span>Tel Num 2</span></dt>
+                <dd>
+                    <span>{{employee.telNum2}}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{employee.email}}</span>
+                </dd>
+                <dt><span>Start Date</span></dt>
+                <dd>
+                    <span>{{employee.startDate}}</span>
+                </dd>
+                <dt><span>End Date</span></dt>
+                <dd>
+                    <span>{{employee.endDate}}</span>
+                </dd>
+                <dt><span>Picture Empl</span></dt>
+                <dd>
+                    <span>{{employee.pictureEmpl}}</span>
+                </dd>
+                <dt><span>Notes</span></dt>
+                <dd>
+                    <span>{{employee.notes}}</span>
+                </dd>
+                <dt><span>Attachments</span></dt>
+                <dd>
+                    <span>{{employee.attachments}}</span>
+                </dd>
+                <dt><span>Ph Privilage</span></dt>
+                <dd>
+                    <div *ngIf="employee.phPrivilage">
+                        <a [routerLink]="['/phone-privilage', employee.phPrivilage?.id, 'view']">{{employee.phPrivilage?.privilage}}</a>
+                    </div>
+                </dd>
+                <dt><span>Group</span></dt>
+                <dd>
+                    <div *ngIf="employee.group">
+                        <a [routerLink]="['/employee-group', employee.group?.id, 'view']">{{employee.group?.groupName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Sector</span></dt>
+                <dd>
+                    <div *ngIf="employee.sector">
+                        <a [routerLink]="['/sector', employee.sector?.id, 'view']">{{employee.sector?.sectorName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Departman</span></dt>
+                <dd>
+                    <div *ngIf="employee.departman">
+                        <a [routerLink]="['/departman', employee.departman?.id, 'view']">{{employee.departman?.depName}}</a>
+                    </div>
+                </dd>
+                <dt><span>Job Desc</span></dt>
+                <dd>
+                    <div *ngIf="employee.jobDesc">
+                        <a [routerLink]="['/job', employee.jobDesc?.id, 'view']">{{employee.jobDesc?.jobDescription}}</a>
+                    </div>
+                </dd>
+                <dt><span>Status</span></dt>
+                <dd>
+                    <div *ngIf="employee.status">
+                        <a [routerLink]="['/job-status', employee.status?.id, 'view']">{{employee.status?.jobStatus}}</a>
+                    </div>
+                </dd>
+                <dt><span>Prof Qualification</span></dt>
+                <dd>
+                    <div *ngIf="employee.profQualification">
+                        <a [routerLink]="['/qualification', employee.profQualification?.id, 'view']">{{employee.profQualification?.proffQualification}}</a>
+                    </div>
+                </dd>
+                <dt><span>Contract Type</span></dt>
+                <dd>
+                    <div *ngIf="employee.contractType">
+                        <a [routerLink]="['/contract', employee.contractType?.id, 'view']">{{employee.contractType?.contractType}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employee', employee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

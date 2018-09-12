@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="substation">
+            <h2><span>Substation</span> {{substation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{substation.name}}</span>
+                </dd>
+                <dt><span>Operation Year</span></dt>
+                <dd>
+                    <span>{{substation.operationYear}}</span>
+                </dd>
+                <dt><span>Facility</span></dt>
+                <dd>
+                    <div *ngIf="substation.facility">
+                        <a [routerLink]="['/facility', substation.facility?.id, 'view']">{{substation.facility?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/substation', substation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

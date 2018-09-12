@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="facility">
+            <h2><span>Facility</span> {{facility.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>In Operation Since</span></dt>
+                <dd>
+                    <span>{{facility.inOperationSince}}</span>
+                </dd>
+                <dt><span>Power</span></dt>
+                <dd>
+                    <span>{{facility.power}}</span>
+                </dd>
+                <dt><span>Num Of Transformers</span></dt>
+                <dd>
+                    <span>{{facility.numOfTransformers}}</span>
+                </dd>
+                <dt><span>Busbars</span></dt>
+                <dd>
+                    <span>{{facility.busbars}}</span>
+                </dd>
+                <dt><span>Num Of Fields</span></dt>
+                <dd>
+                    <span>{{facility.numOfFields}}</span>
+                </dd>
+                <dt><span>Voltage Level</span></dt>
+                <dd>
+                    <div *ngIf="facility.voltageLevel">
+                        <a [routerLink]="['/voltage-level', facility.voltageLevel?.id, 'view']">{{facility.voltageLevel?.voltageLevel}}</a>
+                    </div>
+                </dd>
+                <dt><span>Maintaining</span></dt>
+                <dd>
+                    <div *ngIf="facility.maintaining">
+                        <a [routerLink]="['/facility-maintaining-co', facility.maintaining?.id, 'view']">{{facility.maintaining?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/facility', facility.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

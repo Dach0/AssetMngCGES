@@ -1,0 +1,107 @@
+{
+    "name": "Asset",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "manufacturer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brand",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "model",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "picture",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "serialNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateOfObligation",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "purchasePrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "marketPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "scrapPrice",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "purchasedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "inServiceDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "warrenty",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "attachments",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "type",
+            "otherEntityField": "typeName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "otherEntityField": "locationName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "status",
+            "otherEntityName": "assetStatus",
+            "otherEntityField": "status"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "condition",
+            "otherEntityName": "assetCondition",
+            "otherEntityField": "conditionDesc"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "asset",
+            "otherEntityName": "employee",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180830125057",
+    "entityTableName": "asset",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

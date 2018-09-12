@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Facility.
+    -->
+    <changeSet id="20180830125017-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="voltage_level_id"
+                                 baseTableName="facility"
+                                 constraintName="fk_facility_voltage_level_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="voltage_level"/>
+
+        <addForeignKeyConstraint baseColumnNames="maintaining_id"
+                                 baseTableName="facility"
+                                 constraintName="fk_facility_maintaining_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="facility_maintaining_co"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Ohl.
+    -->
+    <changeSet id="20180830125008-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="substation1_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_substation1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="substation"/>
+
+        <addForeignKeyConstraint baseColumnNames="substation2_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_substation2_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="substation"/>
+
+        <addForeignKeyConstraint baseColumnNames="t_connection_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_t_connection_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tconnection"/>
+
+        <addForeignKeyConstraint baseColumnNames="voltage_level_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_voltage_level_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="voltage_level"/>
+
+        <addForeignKeyConstraint baseColumnNames="ohl_construction_part_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_ohl_construction_part_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pylon_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="thermal_limit_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_thermal_limit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="thermal_limit"/>
+
+        <addForeignKeyConstraint baseColumnNames="cond_cross_sect_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_cond_cross_sect_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="conductor_cross_sect"/>
+
+        <addForeignKeyConstraint baseColumnNames="earth_cross_sect_id"
+                                 baseTableName="ohl"
+                                 constraintName="fk_ohl_earth_cross_sect_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="earth_wire_cross_sect"/>
+
+    </changeSet>
+</databaseChangeLog>

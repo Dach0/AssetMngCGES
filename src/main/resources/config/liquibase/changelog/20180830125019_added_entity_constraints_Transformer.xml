@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Transformer.
+    -->
+    <changeSet id="20180830125019-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="condition_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_condition_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="element_condition"/>
+
+        <addForeignKeyConstraint baseColumnNames="status_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="element_status"/>
+
+        <addForeignKeyConstraint baseColumnNames="coupling_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_coupling_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="coupling"/>
+
+        <addForeignKeyConstraint baseColumnNames="power_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_power_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="power"/>
+
+        <addForeignKeyConstraint baseColumnNames="trans_ratio_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_trans_ratio_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transmission_ratio"/>
+
+        <addForeignKeyConstraint baseColumnNames="manufacturer_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_manufacturer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manufacturer"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transformer_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="service_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_service_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="service"/>
+
+        <addForeignKeyConstraint baseColumnNames="redni_broj_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_redni_broj_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="transformator_number"/>
+
+        <addForeignKeyConstraint baseColumnNames="substation_id"
+                                 baseTableName="transformer"
+                                 constraintName="fk_transformer_substation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="substation"/>
+
+    </changeSet>
+</databaseChangeLog>
